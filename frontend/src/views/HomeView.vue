@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, inject, onMounted, watch, type Ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { fetchFeatures } from '../api';
-import type { Feature } from '../types';
+import { fetchFeatures, updateFeature } from '../api';
+import type { Feature, FeatureStatus } from '../types';
 
 // Inject global state from App.vue
 const globalLoading = inject<Ref<boolean>>('globalLoading')!;
@@ -18,6 +18,13 @@ const moduleFilter = ref<string>('');
 // Available filter options
 const statusOptions: { value: string; label: string }[] = [
   { value: '', label: 'All Status' },
+  { value: 'todo', label: 'To Do' },
+  { value: 'doing', label: 'In Progress' },
+  { value: 'done', label: 'Done' },
+];
+
+// Status options for inline change
+const featureStatusOptions: { value: FeatureStatus; label: string }[] = [
   { value: 'todo', label: 'To Do' },
   { value: 'doing', label: 'In Progress' },
   { value: 'done', label: 'Done' },
@@ -65,6 +72,22 @@ watch([statusFilter, moduleFilter], () => {
   updateUrlParams();
   loadFeatures();
 });
+
+// Handle inline status change with optimistic update
+async function handleStatusChange(feature: Feature, newStatus: FeatureStatus) {
+  const oldStatus = feature.status;
+
+  // Optimistic update
+  feature.status = newStatus;
+
+  try {
+    await updateFeature(feature.id, { status: newStatus });
+  } catch (err) {
+    // Rollback on error
+    feature.status = oldStatus;
+    globalError.value = err instanceof Error ? err.message : 'Failed to update status';
+  }
+}
 
 onMounted(() => {
   syncFiltersFromUrl();
@@ -116,19 +139,24 @@ onMounted(() => {
         v-for="feature in features"
         :key="feature.id"
         class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm"
+        :class="{ 'opacity-60': feature.status === 'done' }"
       >
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-medium text-gray-900">{{ feature.title }}</h3>
-          <span
+          <select
+            :value="feature.status"
+            @change="handleStatusChange(feature, ($event.target as HTMLSelectElement).value as FeatureStatus)"
+            class="text-xs font-medium rounded-full px-2 py-1 border-0 cursor-pointer"
             :class="{
               'bg-gray-100 text-gray-800': feature.status === 'todo',
               'bg-blue-100 text-blue-800': feature.status === 'doing',
               'bg-green-100 text-green-800': feature.status === 'done',
             }"
-            class="px-2 py-1 text-xs font-medium rounded-full"
           >
-            {{ feature.status }}
-          </span>
+            <option v-for="opt in featureStatusOptions" :key="opt.value" :value="opt.value">
+              {{ opt.label }}
+            </option>
+          </select>
         </div>
         <div class="mt-2 flex items-center justify-between">
           <div class="flex items-center gap-4 text-sm text-gray-500">

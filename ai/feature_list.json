@@ -260,7 +260,7 @@
       "description": "Offer inline status change control (advance or select) with optimistic UI update | 列表内提供状态切换控件并乐观更新 UI",
       "module": "frontend-app",
       "priority": 21,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Offer inline status change control (advance or select) with optimistic UI update | 列表内提供状态切换控件并乐观更新 UI works as expected"
       ],
@@ -271,7 +271,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:55:44.503Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "ea81384c1e01ca742b0879365308d71f8333ca78",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.stats-view",
@@ -349,7 +356,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:52:54.545Z",
+    "updatedAt": "2025-11-30T12:55:44.505Z",
     "version": "1.0.0"
   }
 }

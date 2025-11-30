@@ -2,45 +2,59 @@
   "version": "1.0.0",
   "capabilities": {
     "hasTests": false,
-    "testCommand": null,
-    "testFramework": null,
+    "testCommand": "",
+    "testFramework": "",
     "hasTypeCheck": true,
-    "typeCheckCommand": "cd backend && npx tsc --noEmit && cd ../frontend && npx vue-tsc --noEmit",
+    "typeCheckCommand": "npm run build --prefix backend && npm run build --prefix frontend",
     "hasLint": false,
-    "lintCommand": null,
+    "lintCommand": "",
     "hasBuild": true,
-    "buildCommand": "cd backend && npm run build && cd ../frontend && npm run build",
+    "buildCommand": "npm run build --prefix backend && npm run build --prefix frontend",
     "hasGit": true,
     "source": "ai-discovered",
-    "confidence": 0.37749999999999995,
+    "confidence": 0.36,
     "languages": [
       "TypeScript",
       "Vue",
-      "Shell"
+      "JavaScript"
     ],
-    "detectedAt": "2025-11-30T12:51:07.127Z",
+    "detectedAt": "2025-11-30T12:54:01.708Z",
     "testInfo": {
       "available": false,
-      "command": null,
-      "framework": null,
-      "confidence": 0.2
+      "command": "",
+      "framework": "",
+      "confidence": 0.12
     },
     "typeCheckInfo": {
       "available": true,
-      "command": "cd backend && npx tsc --noEmit && cd ../frontend && npx vue-tsc --noEmit",
-      "confidence": 0.53
+      "command": "npm run build --prefix backend && npm run build --prefix frontend",
+      "confidence": 0.6
     },
     "lintInfo": {
       "available": false,
-      "command": null,
-      "confidence": 0.2
+      "command": "",
+      "confidence": 0.12
     },
     "buildInfo": {
       "available": true,
-      "command": "cd backend && npm run build && cd ../frontend && npm run build",
-      "confidence": 0.58
-    }
+      "command": "npm run build --prefix backend && npm run build --prefix frontend",
+      "confidence": 0.6
+    },
+    "customRules": [
+      {
+        "id": "build-backend",
+        "description": "Type-check and compile backend TypeScript",
+        "command": "npm run build --prefix backend",
+        "type": "build"
+      },
+      {
+        "id": "build-frontend",
+        "description": "Type-check and bundle frontend with Vite",
+        "command": "npm run build --prefix frontend",
+        "type": "build"
+      }
+    ]
   },
-  "commitHash": "3d95d8b073483b9c984ecd62a8f33de9bddb6b4c",
+  "commitHash": "ea81384c1e01ca742b0879365308d71f8333ca78",
   "trackedFiles": []
 }
