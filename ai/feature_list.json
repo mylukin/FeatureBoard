@@ -335,7 +335,7 @@
       "description": "Playwright scenarios for empty state, create, edit/status change, filter, and delete/stat-refresh | Playwright 覆盖空列表、创建、编辑/状态流转、过滤及删除与统计刷新",
       "module": "e2e-tests",
       "priority": 24,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Playwright scenarios for empty state, create, edit/status change, filter, and delete/stat-refresh | Playwright 覆盖空列表、创建、编辑/状态流转、过滤及删除与统计刷新 works as expected"
       ],
@@ -346,7 +346,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T13:05:03.665Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "6643f351ca8ae0a17240e6db51b1690b713659da",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "tooling.scripts.dev",
@@ -370,7 +377,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T13:01:05.796Z",
+    "updatedAt": "2025-11-30T13:05:03.667Z",
     "version": "1.0.0"
   }
 }

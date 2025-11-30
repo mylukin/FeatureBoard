@@ -2,45 +2,38 @@
   "version": "1.0.0",
   "capabilities": {
     "hasTests": false,
-    "testCommand": null,
-    "testFramework": null,
-    "hasTypeCheck": true,
-    "typeCheckCommand": "(cd backend && npx tsc --noEmit) && (cd frontend && npx vue-tsc --noEmit)",
+    "hasTypeCheck": false,
     "hasLint": false,
-    "lintCommand": null,
     "hasBuild": true,
-    "buildCommand": "(cd backend && npm run build) && (cd frontend && npm run build)",
+    "buildCommand": "npm run build",
     "hasGit": true,
-    "source": "ai-discovered",
-    "confidence": 0.39749999999999996,
+    "source": "preset",
+    "confidence": 0.825,
     "languages": [
-      "TypeScript",
-      "JavaScript",
-      "Shell"
+      "nodejs"
     ],
-    "detectedAt": "2025-11-30T13:00:11.064Z",
+    "detectedAt": "2025-11-30T13:03:52.230Z",
     "testInfo": {
       "available": false,
-      "command": null,
-      "framework": null,
-      "confidence": 0.2
+      "confidence": 0
     },
     "typeCheckInfo": {
-      "available": true,
-      "command": "(cd backend && npx tsc --noEmit) && (cd frontend && npx vue-tsc --noEmit)",
-      "confidence": 0.55
+      "available": false,
+      "confidence": 0
     },
     "lintInfo": {
       "available": false,
-      "command": null,
-      "confidence": 0.2
+      "confidence": 0
     },
     "buildInfo": {
       "available": true,
-      "command": "(cd backend && npm run build) && (cd frontend && npm run build)",
-      "confidence": 0.64
+      "command": "npm run build",
+      "confidence": 0.9
     }
   },
-  "commitHash": "c7a2aee0aa9bed31da21f6b455a043a0db11c905",
-  "trackedFiles": []
+  "commitHash": "6643f351ca8ae0a17240e6db51b1690b713659da",
+  "trackedFiles": [
+    "package.json",
+    "package-lock.json"
+  ]
 }
