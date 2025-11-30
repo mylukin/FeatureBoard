@@ -2,58 +2,58 @@
   "version": "1.0.0",
   "capabilities": {
     "hasTests": false,
-    "testCommand": null,
-    "testFramework": null,
+    "testCommand": "",
+    "testFramework": "",
     "hasTypeCheck": true,
-    "typeCheckCommand": "cd backend && npx tsc --noEmit",
+    "typeCheckCommand": "cd frontend && npx vue-tsc --noEmit",
     "hasLint": false,
-    "lintCommand": null,
+    "lintCommand": "",
     "hasBuild": true,
-    "buildCommand": "cd frontend && npm run build",
+    "buildCommand": "cd backend && npm run build && cd ../frontend && npm run build",
     "hasGit": true,
     "source": "ai-discovered",
-    "confidence": 0.355,
+    "confidence": 0.335,
     "languages": [
       "TypeScript",
-      "Vue"
+      "JavaScript"
     ],
-    "detectedAt": "2025-11-30T12:41:32.240Z",
+    "detectedAt": "2025-11-30T12:44:57.690Z",
     "testInfo": {
       "available": false,
-      "command": null,
-      "framework": null,
-      "confidence": 0.12
+      "command": "",
+      "framework": "",
+      "confidence": 0.2
     },
     "typeCheckInfo": {
       "available": true,
-      "command": "cd backend && npx tsc --noEmit",
-      "confidence": 0.58
+      "command": "cd frontend && npx vue-tsc --noEmit",
+      "confidence": 0.44
     },
     "lintInfo": {
       "available": false,
-      "command": null,
-      "confidence": 0.1
+      "command": "",
+      "confidence": 0.15
     },
     "buildInfo": {
       "available": true,
-      "command": "cd frontend && npm run build",
-      "confidence": 0.62
+      "command": "cd backend && npm run build && cd ../frontend && npm run build",
+      "confidence": 0.55
     },
     "customRules": [
       {
-        "id": "typecheck-frontend",
-        "description": "Type-check the Vue frontend",
-        "command": "cd frontend && npx vue-tsc --noEmit",
-        "type": "typecheck"
+        "id": "build-backend",
+        "description": "Compile backend TypeScript",
+        "command": "cd backend && npm run build",
+        "type": "build"
       },
       {
-        "id": "build-backend",
-        "description": "Build the backend TypeScript server",
-        "command": "cd backend && npm run build",
+        "id": "build-frontend",
+        "description": "Type-check and build Vue frontend",
+        "command": "cd frontend && npm run build",
         "type": "build"
       }
     ]
   },
-  "commitHash": "8f823850f67761197f6657b2a0c1e2977ef4e60d",
+  "commitHash": "806d6d19875d07b1ef7690058b44f09b742b8287",
   "trackedFiles": []
 }

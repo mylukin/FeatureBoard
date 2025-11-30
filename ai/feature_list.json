@@ -185,7 +185,7 @@
       "description": "Sync filters to URL query params and hydrate state on refresh | 将过滤条件同步到 URL 并在刷新时恢复",
       "module": "frontend-app",
       "priority": 18,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Sync filters to URL query params and hydrate state on refresh | 将过滤条件同步到 URL 并在刷新时恢复 works as expected"
       ],
@@ -196,7 +196,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:46:28.300Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "806d6d19875d07b1ef7690058b44f09b742b8287",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.form-create",
@@ -328,7 +335,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:44:13.554Z",
+    "updatedAt": "2025-11-30T12:46:28.304Z",
     "version": "1.0.0"
   }
 }
