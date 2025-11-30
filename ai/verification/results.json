@@ -1,0 +1,604 @@
+{
+  "results": {
+    "database.schema.init": {
+      "featureId": "database.schema.init",
+      "timestamp": "2025-11-30T11:57:31.259Z",
+      "commitHash": "unknown",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "",
+          "duration": 582
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n",
+          "duration": 495
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Bootstrap SQLite schema for features with defaults and timestamps | 初始化 SQLite 功能项表，含默认值和时间戳 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Here is the professional prompt: 'Verify the SQLite features schema initializes with defaults (module \"other\", status restricted with default \"todo\", priority default 3) and timestamp fields, including trigger upkeep, when the database starts.' → Executing now...\n> 专业提示：“确认 SQLite 功能项表在数据库启动时创建并包含默认值（module 默认为 other、status 受限且默认 todo、priority 默认为 3）及时间戳字段，并含有更新时间戳的触发器。”\nSchema creates the features table with required fields and defaults plus createdAt/updatedAt timestamps, and a CHECK-constrained status/priority; an AFTER UPDATE trigger refreshes updatedAt to datetime('now'), and initDatabase runs on startup to apply the schema. No automated tests found for this behavior, so confidence relies on code inspection.\n> 架构创建了带必填字段和默认值的 features 表，并含 createdAt/updatedAt 时间戳以及约束的状态/优先级；AFTER UPDATE 触发器会将 updatedAt 刷新为当前时间，initDatabase 在启动时运行以应用该架构。未找到覆盖此行为的自动化测试，因此结论基于代码检查。",
+          "evidence": [
+            "backend/src/db/schema.ts:33",
+            "backend/src/db/schema.ts:47",
+            "backend/src/index.ts:7"
+          ],
+          "confidence": 0.72
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "Feature schema bootstraps with defaults, timestamps, and trigger logic executed at startup as shown in code; lack of automated tests leaves some uncertainty but implementation aligns with acceptance intent.\n> 功能表架构在启动时按代码设置默认值、时间戳和触发器逻辑，虽然缺少自动化测试带来些许不确定性，但实现符合验收意图。",
+      "suggestions": [
+        "Add automated tests to validate table defaults, CHECK constraints, and updatedAt trigger behavior during inserts/updates.\n> 添加自动化测试以验证插入/更新时的表默认值、CHECK 约束以及 updatedAt 触发器行为。"
+      ],
+      "codeQualityNotes": [
+        "Schema and init flow are straightforward but currently untested; consider adding lightweight integration tests against an ephemeral SQLite database.\n> 架构和初始化流程简单明了，但目前缺少测试；建议针对临时 SQLite 数据库添加轻量集成测试。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "api.features.crud": {
+      "featureId": "api.features.crud",
+      "timestamp": "2025-11-30T12:11:59.540Z",
+      "commitHash": "unknown",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "",
+          "duration": 737
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n",
+          "duration": 600
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Expose RESTful CRUD at /api/features with JSON responses and proper errors | 在 /api/features 提供 RESTful CRUD，返回 JSON 并处理错误状态码 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "RESTful routes mounted at /api/features covering list, detail, create, update, delete with JSON and status codes; validation ensures errors for bad input/ids, and handlers return 400/404/500 on failures; database is initialized before routing. No automated tests cover these flows, so verification is by code inspection only.\n> 在 /api/features 下提供列表、详情、创建、更新、删除的 RESTful 路由，并返回 JSON 与对应状态码；校验逻辑对无效输入或 ID 返回 400/404/500 错误；数据库在路由注册前已初始化。由于缺少自动化测试，本次验证仅基于代码阅读。",
+          "evidence": [
+            "backend/src/index.ts:15",
+            "backend/src/index.ts:20",
+            "backend/src/routes/features.ts:16",
+            "backend/src/routes/features.ts:55",
+            "backend/src/routes/features.ts:79",
+            "backend/src/routes/features.ts:136",
+            "backend/src/routes/features.ts:229"
+          ],
+          "confidence": 0.68
+        }
+      ],
+      "verdict": "needs_review",
+      "verifiedBy": "codex",
+      "overallReasoning": "CRUD endpoints and error responses are implemented under /api/features, but there is no automated test coverage to confirm behavior at runtime, so confidence is limited to code inspection.\n> /api/features 下的 CRUD 端点及错误响应已实现，但缺少自动化测试验证运行时行为，当前结论的信心仅限于代码层面。",
+      "suggestions": [
+        "Add integration tests for /api/features covering happy paths and validation/error cases to raise confidence.\n> 为 /api/features 补充集成测试，覆盖正常流程与校验/错误场景以提升信心。"
+      ],
+      "codeQualityNotes": [
+        "Validation and error handling are explicit across CRUD handlers, but automated verification is missing.\n> CRUD 处理器中的校验与错误处理较明确，但缺少自动化验证。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.shell.layout": {
+      "featureId": "frontend.shell.layout",
+      "timestamp": "2025-11-30T12:37:36.769Z",
+      "commitHash": "d96815f80792b9f681c4669ec55189b713b4a73b",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n",
+          "duration": 712
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-jieFdk7P.css       9.49 kB │ gzip:  2.59 kB\ndist/assets/EditView-DFNFOKqJ.js     0.35 kB │ gzip:  0.28 kB\ndist/assets/CreateView-DSmHKWJq.js   0.40 kB │ gzip:  0.31 kB\ndist/assets/HomeView-Csxp6QJ0.js     1.78 kB │ gzip:  0.95 kB\ndist/assets/index-CnbJQgEw.js       92.49 kB │ gzip: 36.13 kB\n✓ built in 885ms\n",
+          "duration": 2469
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Build SPA shell with header/title and global loading/error handling | 构建含标题栏及全局加载/错误提示的单页框架 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "SPA shell mounts via Vue router with App wrapping all routes and providing header/title plus layout container; App exposes global loading/error refs, renders a top loading bar when active, and shows a dismissible error banner bound to the shared ref; Home view injects those refs and toggles them around the feature fetch to drive the global indicators, matching the expected global handling, though no automated tests cover this behavior.\\n> 单页框架通过 Vue 路由挂载，App 包裹所有路由并提供标题栏及布局容器；App 暴露全局加载/错误响应式状态，加载时显示顶部进度条，错误时展示可关闭的提示条；首页注入这些状态，在获取 feature 数据时切换它们以驱动全局提示，符合预期的全局处理，但目前没有自动化测试覆盖此行为。",
+          "evidence": [
+            "frontend/src/App.vue:5",
+            "frontend/src/App.vue:20",
+            "frontend/src/App.vue:38",
+            "frontend/src/App.vue:49",
+            "frontend/src/views/HomeView.vue:6",
+            "frontend/src/views/HomeView.vue:12",
+            "frontend/src/main.ts:6"
+          ],
+          "confidence": 0.73
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "SPA shell with header/title and global loading/error banners is implemented and wired through provided/injected refs, exercised by the Home view’s data fetch flow; however, no tests currently validate the shell or global states.\\n> 单页框架的标题栏与全局加载/错误提示已实现，并通过 provide/inject 在首页数据流中触发，但目前没有测试验证这些壳层或全局状态。",
+      "suggestions": [
+        "Add UI/e2e tests to assert global loading bar and error banner behavior during data fetch failures.\\n> 添加 UI/E2E 测试，在数据获取失败时验证全局加载条和错误横幅的表现。"
+      ],
+      "codeQualityNotes": [
+        "Global state is simple and localized; consider centralizing shared refs in a composable/store if more views need them.\\n> 全局状态实现简单且局部，如果后续更多页面需要共享，可考虑在可组合函数或状态仓库中集中管理。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.list-view": {
+      "featureId": "frontend.features.list-view",
+      "timestamp": "2025-11-30T12:40:04.656Z",
+      "commitHash": "023c18f17fa81d56c5d558275f8b0825c1672ebd",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-jieFdk7P.css       9.49 kB │ gzip:  2.59 kB\ndist/assets/EditView-DFNFOKqJ.js     0.35 kB │ gzip:  0.28 kB\ndist/assets/CreateView-DSmHKWJq.js   0.40 kB │ gzip:  0.31 kB\ndist/assets/HomeView-Csxp6QJ0.js     1.78 kB │ gzip:  0.95 kB\ndist/assets/index-CnbJQgEw.js       92.49 kB │ gzip: 36.13 kB\n✓ built in 805ms\n",
+          "duration": 2303
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-jieFdk7P.css       9.49 kB │ gzip:  2.59 kB\ndist/assets/EditView-DFNFOKqJ.js     0.35 kB │ gzip:  0.28 kB\ndist/assets/CreateView-DSmHKWJq.js   0.40 kB │ gzip:  0.31 kB\ndist/assets/HomeView-Csxp6QJ0.js     1.78 kB │ gzip:  0.95 kB\ndist/assets/index-CnbJQgEw.js       92.49 kB │ gzip: 36.13 kB\n✓ built in 817ms\n",
+          "duration": 2258
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Render feature list (title/module/status/priority) using API data with empty states | 使用 API 数据展示功能列表含空状态 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Feature list view fetches API data on mount via fetchFeatures and stores results in the features ref, enabling runtime rendering of API-driven items (frontend/src/views/HomeView.vue:12-26).\n> 功能列表视图在挂载时通过 fetchFeatures 调用 API 并将结果存入 features，从而以 API 数据驱动渲染（frontend/src/views/HomeView.vue:12-26）。\nTemplate renders each feature’s title, status badge, module, and priority, with an empty-state message shown when loading is finished and no features exist (frontend/src/views/HomeView.vue:33-63).\n> 模板会为每个功能渲染标题、状态徽章、模块与优先级，并在加载完成且无数据时显示空状态文案（frontend/src/views/HomeView.vue:33-63）。\nNo automated tests cover this behavior; the frontend package.json lacks any test scripts or dependencies (frontend/package.json:1-17).\n> 此行为缺少自动化测试，frontend/package.json 未包含测试脚本或相关依赖（frontend/package.json:1-17）。",
+          "evidence": [
+            "frontend/src/views/HomeView.vue:12",
+            "frontend/src/views/HomeView.vue:33",
+            "frontend/src/views/HomeView.vue:45",
+            "frontend/src/views/HomeView.vue:59",
+            "frontend/package.json:1"
+          ],
+          "confidence": 0.76
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "The feature list view pulls data from the API on mount and renders title/module/status/priority with an empty state when no items exist, though no automated tests verify it.\n> 功能列表视图在挂载时从 API 获取数据并渲染标题/模块/状态/优先级，且在无数据时显示空状态，但目前没有自动化测试验证。",
+      "suggestions": [
+        "Add unit or E2E tests covering feature list rendering and empty state to validate API integration.\n> 添加单元或端到端测试，覆盖功能列表渲染与空状态，以验证 API 集成。"
+      ],
+      "codeQualityNotes": [
+        "No automated tests or testing framework configured in frontend package.json, leaving the feature unverified in CI.\n> frontend package.json 未配置测试框架或自动化测试，使该功能在 CI 中缺乏验证。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.filters-ui": {
+      "featureId": "frontend.features.filters-ui",
+      "timestamp": "2025-11-30T12:44:13.550Z",
+      "commitHash": "8f823850f67761197f6657b2a0c1e2977ef4e60d",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "",
+          "duration": 834
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-OavNVlEB.css      10.03 kB │ gzip:  2.70 kB\ndist/assets/EditView-CvOW2XTy.js     0.35 kB │ gzip:  0.28 kB\ndist/assets/CreateView-DtzDaA_b.js   0.40 kB │ gzip:  0.31 kB\ndist/assets/HomeView-C_FfjJ3A.js     3.36 kB │ gzip:  1.49 kB\ndist/assets/index-BJ_2RCcs.js       94.37 kB │ gzip: 36.82 kB\n✓ built in 1.02s\n",
+          "duration": 2067
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Add status/module filter controls above list and bind to API queries | 列表上方添加状态/模块过滤控件并驱动查询 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Status and module dropdowns sit above the list, bound to reactive filters that sync with URL query params, trigger reloads, and pass selected status/module into fetchFeatures to drive API requests (frontend/src/views/HomeView.vue:15, frontend/src/views/HomeView.vue:29, frontend/src/views/HomeView.vue:64, frontend/src/views/HomeView.vue:79). > 状态和模块下拉位于列表上方，绑定到响应式筛选条件并同步 URL 查询参数，在变更时重新加载并将所选状态/模块传给 fetchFeatures 以驱动 API 请求（frontend/src/views/HomeView.vue:15, frontend/src/views/HomeView.vue:29, frontend/src/views/HomeView.vue:64, frontend/src/views/HomeView.vue:79）。 API client builds query strings for status/module and backend GET /api/features applies those filters in SQL, so requests reflect selected filters (frontend/src/api.ts:18, backend/src/routes/features.ts:16). > API 客户端为状态/模块构建查询字符串，后端 GET /api/features 在 SQL 中应用这些过滤条件，确保请求反映选择的过滤器（frontend/src/api.ts:18, backend/src/routes/features.ts:16）。 No automated tests exercise the filters UI or API parameters, so verification is from code inspection only. > 未发现验证过滤 UI 或 API 参数的自动化测试，因此结论仅基于代码检查。",
+          "evidence": [
+            "frontend/src/views/HomeView.vue:15",
+            "frontend/src/views/HomeView.vue:29",
+            "frontend/src/views/HomeView.vue:64",
+            "frontend/src/views/HomeView.vue:79",
+            "frontend/src/api.ts:18",
+            "backend/src/routes/features.ts:16"
+          ],
+          "confidence": 0.73
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "UI adds status/module selectors bound to query params and reloads data via filtered API calls; backend accepts those filters, but no automated tests cover the flow, so confidence is based on implementation review. > 界面添加了状态/模块选择器，绑定查询参数并通过带过滤的 API 请求重新加载数据；后端支持这些过滤条件，但缺少覆盖该流程的自动化测试，因此信心来自实现层面的检查。",
+      "suggestions": [
+        "Add automated tests (unit or e2e) to verify filter selections update the query string and API parameters. > 添加自动化测试（单元或端到端）以验证过滤选择会更新查询字符串和 API 参数。"
+      ],
+      "codeQualityNotes": [
+        "No current tests cover the new filters, leaving the feature unvalidated by automation. > 当前没有测试覆盖新过滤器，功能缺少自动化验证。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.url-sync": {
+      "featureId": "frontend.features.url-sync",
+      "timestamp": "2025-11-30T12:46:28.300Z",
+      "commitHash": "806d6d19875d07b1ef7690058b44f09b742b8287",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "",
+          "duration": 831
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-OavNVlEB.css      10.03 kB │ gzip:  2.70 kB\ndist/assets/EditView-CvOW2XTy.js     0.35 kB │ gzip:  0.28 kB\ndist/assets/CreateView-DtzDaA_b.js   0.40 kB │ gzip:  0.31 kB\ndist/assets/HomeView-C_FfjJ3A.js     3.36 kB │ gzip:  1.49 kB\ndist/assets/index-BJ_2RCcs.js       94.37 kB │ gzip: 36.82 kB\n✓ built in 892ms\n",
+          "duration": 2549
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Sync filters to URL query params and hydrate state on refresh | 将过滤条件同步到 URL 并在刷新时恢复 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Filter selections are pushed into the URL via updateUrlParams and the watch on statusFilter/moduleFilter triggers both router.replace and reloads with the current query (frontend/src/views/HomeView.vue:56-67).\n> 通过对 statusFilter/moduleFilter 的侦听，updateUrlParams 将筛选值写入 URL 并触发基于当前查询的重新加载（frontend/src/views/HomeView.vue:56-67）。\nOn mount, syncFiltersFromUrl reads route.query into reactive filters before loading data, so refreshing with query params rehydrates state (frontend/src/views/HomeView.vue:50-72).\n> 挂载时 syncFiltersFromUrl 在加载数据前读取 route.query 到响应式筛选器，因此携带查询参数刷新页面会恢复筛选状态（frontend/src/views/HomeView.vue:50-72）。\nNo automated tests cover this flow, so assurance comes only from the implementation review.\n> 缺少针对该流程的自动化测试，因此信心仅来自实现审查。",
+          "evidence": [
+            "frontend/src/views/HomeView.vue:50",
+            "frontend/src/views/HomeView.vue:56",
+            "frontend/src/views/HomeView.vue:63",
+            "frontend/src/views/HomeView.vue:69"
+          ],
+          "confidence": 0.74
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "Implementation syncs filter state to URL query parameters via router.replace and reloads data on changes, and hydrates filters from route.query on mount to restore state after refresh, but there are no automated tests verifying this path.\n> 实现通过 router.replace 将筛选状态同步到 URL 并在变更时重新加载数据，挂载时从 route.query 恢复筛选以支持刷新后的状态恢复，但缺少验证此路径的自动化测试。",
+      "suggestions": [
+        "Add component or E2E tests covering filter-to-URL sync and refresh hydration using Vue Test Utils or Cypress to prevent regressions.\n> 使用 Vue Test Utils 或 Cypress 添加覆盖筛选到 URL 同步与刷新恢复的组件/端到端测试以防回归。"
+      ],
+      "codeQualityNotes": [
+        "Back/forward navigation changing query params will not re-sync filters because route.query is only read on mount; consider watching route changes if that scenario matters.\n> 浏览器前进/后退导致查询参数变化时不会重新同步筛选，因为 route.query 只在挂载时读取；如需支持此场景可监听路由变化。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.form-create": {
+      "featureId": "frontend.features.form-create",
+      "timestamp": "2025-11-30T12:49:12.527Z",
+      "commitHash": "8a384c52f3fae2b983041338e461603b1957673f",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n",
+          "duration": 614
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-CxKtugdm.css      10.71 kB │ gzip:  2.80 kB\ndist/assets/EditView-B9enDKRI.js     0.35 kB │ gzip:  0.28 kB\ndist/assets/api-DsvnaHXQ.js          0.52 kB │ gzip:  0.34 kB\ndist/assets/HomeView-DmcuYXaB.js     3.03 kB │ gzip:  1.33 kB\ndist/assets/CreateView-S1kMXmyF.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/index-CfT9ZxBk.js       96.02 kB │ gzip: 37.50 kB\n✓ built in 871ms\n",
+          "duration": 2366
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Provide create form dialog/route with validation to POST /api/features | 提供创建表单对话框/路由，校验后提交 POST /api/features works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Create route /create loads CreateView, rendering form with required title validation and submit handler that posts via createFeature then redirects home, with loading/error handling (frontend/src/views/CreateView.vue:30-60; frontend/src/main.ts:6-23). > /create 路由加载 CreateView，表单校验标题必填并通过 createFeature 提交后跳转首页，包含加载和错误处理。",
+          "evidence": [
+            "frontend/src/views/CreateView.vue:30-60",
+            "frontend/src/views/CreateView.vue:64-164",
+            "frontend/src/api.ts:33-39",
+            "frontend/src/main.ts:6-23",
+            "frontend/src/App.vue:24-33",
+            "frontend/package.json:1-18"
+          ],
+          "confidence": 0.72
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "Create flow is implemented with route and form validation posting to /api/features; no automated tests, but code path is straightforward and type/build checks pass. > 创建流程已实现（路由和表单校验提交到 /api/features）；缺少自动化测试，但代码路径简单且类型/构建检查通过。",
+      "suggestions": [
+        "Add frontend unit or e2e tests covering create form validation and POST success/failure paths. > 添加前端单元或端到端测试覆盖创建表单校验及提交成功/失败路径。"
+      ],
+      "codeQualityNotes": [
+        "Form currently only validates required title; consider additional field constraints if backend enforces them. > 表单目前仅校验必填标题，如后端有更多约束可补充。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.form-edit": {
+      "featureId": "frontend.features.form-edit",
+      "timestamp": "2025-11-30T12:52:54.541Z",
+      "commitHash": "3d95d8b073483b9c984ecd62a8f33de9bddb6b4c",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "",
+          "duration": 1602
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-B6opojKk.css      10.81 kB │ gzip:  2.81 kB\ndist/assets/api-BQumayLg.js          0.76 kB │ gzip:  0.38 kB\ndist/assets/HomeView-CUAKtvP-.js     3.30 kB │ gzip:  1.45 kB\ndist/assets/CreateView-D2dvcEcq.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-80ZwYVWc.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/index-DE8WPbId.js       96.07 kB │ gzip: 37.51 kB\n✓ built in 868ms\n",
+          "duration": 2414
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Enable editing existing feature with prefilled form and PUT submission | 支持编辑功能项，表单回填并提交 PUT 更新 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Edit view fetches the existing feature on mount and populates title/description/module/status/priority refs, giving users prefilled values before editing (frontend/src/views/EditView.vue:33-88).\n> 编辑页面在挂载时获取功能项并填充标题、描述、模块、状态、优先级字段，确保编辑前表单回填 (frontend/src/views/EditView.vue:33-88).\nSubmission triggers updateFeature with PUT to /api/features/:id carrying trimmed fields and routes back home on success, matching the required update flow (frontend/src/views/EditView.vue:62-83; frontend/src/api.ts:42-48).\n> 提交时调用 updateFeature 以 PUT /api/features/:id 发送整理后的字段，并在成功后返回首页，符合更新流程要求 (frontend/src/views/EditView.vue:62-83; frontend/src/api.ts:42-48).\nNo automated tests found for the edit prefill or PUT submission path, so behavior is unverified by tests (tests folder empty).\n> 未发现覆盖编辑回填或 PUT 提交流程的自动化测试，因此行为未被测试验证 (tests 文件夹为空).",
+          "evidence": [
+            "frontend/src/views/EditView.vue:33",
+            "frontend/src/views/EditView.vue:62",
+            "frontend/src/api.ts:42"
+          ],
+          "confidence": 0.62
+        }
+      ],
+      "verdict": "needs_review",
+      "verifiedBy": "codex",
+      "overallReasoning": "Implementation covers prefill and PUT update flows, but the absence of automated tests keeps confidence below the passing threshold.\n> 实现覆盖了回填和 PUT 更新流程，但缺少自动化测试使得信心低于通过标准。",
+      "suggestions": [
+        "Add frontend integration tests that load an existing feature, assert form prefill, submit via PUT, and verify navigation/updated data, using a tool like Playwright or Cypress.\n> 编写前端集成测试：加载已有功能项、断言表单回填、通过 PUT 提交并验证跳转/数据更新，可用 Playwright 或 Cypress."
+      ],
+      "codeQualityNotes": [
+        "Edit flow includes loading/error handling and minimal title validation; broader validation (e.g., status/priority bounds) could further harden the form.\n> 编辑流程包含加载/错误处理和标题校验；若增加状态/优先级范围校验可进一步增强表单健壮性。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.state-transition": {
+      "featureId": "frontend.features.state-transition",
+      "timestamp": "2025-11-30T12:55:44.503Z",
+      "commitHash": "ea81384c1e01ca742b0879365308d71f8333ca78",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-DLwbp6pY.css      10.91 kB │ gzip:  2.83 kB\ndist/assets/api-BQumayLg.js          0.76 kB │ gzip:  0.38 kB\ndist/assets/HomeView-DA-WAZ6g.js     3.80 kB │ gzip:  1.60 kB\ndist/assets/CreateView-Dt6FLdbn.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-Bpsayj4C.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/index-CUH2f4Ic.js       96.07 kB │ gzip: 37.51 kB\n✓ built in 973ms\n",
+          "duration": 2761
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-DLwbp6pY.css      10.91 kB │ gzip:  2.83 kB\ndist/assets/api-BQumayLg.js          0.76 kB │ gzip:  0.38 kB\ndist/assets/HomeView-DA-WAZ6g.js     3.80 kB │ gzip:  1.60 kB\ndist/assets/CreateView-Dt6FLdbn.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-Bpsayj4C.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/index-CUH2f4Ic.js       96.07 kB │ gzip: 37.51 kB\n✓ built in 1.03s\n",
+          "duration": 2891
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Offer inline status change control (advance or select) with optimistic UI update | 列表内提供状态切换控件并乐观更新 UI works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Inline status select on each feature card triggers handleStatusChange with optimistic status assignment and rollback on failure in frontend/src/views/HomeView.vue:76-159, matching the inline control plus optimistic UI requirement.\n> 特性卡片上的状态下拉在frontend/src/views/HomeView.vue:76-159通过handleStatusChange进行乐观赋值并在失败时回滚，符合内联切换和乐观更新的需求。\nNo automated tests cover this interaction (frontend/package.json:6-10 has no test scripts and tests/ is empty), so verification is via code inspection only.\n> 没有自动化测试覆盖该交互（frontend/package.json:6-10未定义测试脚本且tests目录为空），因此仅基于代码检查验证。",
+          "evidence": [
+            "frontend/src/views/HomeView.vue:76",
+            "frontend/src/views/HomeView.vue:144",
+            "frontend/package.json:6"
+          ],
+          "confidence": 0.72
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "Inline status-change select with optimistic update and rollback is implemented in the feature list, but there is no automated test coverage; assessment relies on code review.\n> 特性列表中实现了带乐观更新和回滚的内联状态切换，但缺少自动化测试覆盖；评估基于代码审阅。",
+      "suggestions": [
+        "Add a component or e2e test exercising the inline status select, confirming optimistic UI update and rollback on server failure.\n> 为内联状态选择添加组件或端到端测试，验证乐观更新及服务器失败时的回滚。"
+      ],
+      "codeQualityNotes": [
+        "Consider disabling the status control during the update call or showing transient feedback to avoid overlapping requests.\n> 可在更新调用期间禁用状态控件或显示短暂反馈，以避免请求重叠。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.stats-view": {
+      "featureId": "frontend.features.stats-view",
+      "timestamp": "2025-11-30T12:58:41.422Z",
+      "commitHash": "65a5828a5cce188384bf4d13eeb9d37d18557ce6",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-C9-yKpg3.css      11.39 kB │ gzip:  2.95 kB\ndist/assets/api-CNaMUVfq.js          0.83 kB │ gzip:  0.40 kB\ndist/assets/CreateView-CYyyg7QJ.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-D3zUo1Uk.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/HomeView-DzDJk8n1.js     5.76 kB │ gzip:  2.01 kB\ndist/assets/index-CkU02HGm.js       96.07 kB │ gzip: 37.52 kB\n✓ built in 862ms\n",
+          "duration": 2517
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-C9-yKpg3.css      11.39 kB │ gzip:  2.95 kB\ndist/assets/api-CNaMUVfq.js          0.83 kB │ gzip:  0.40 kB\ndist/assets/CreateView-CYyyg7QJ.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-D3zUo1Uk.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/HomeView-DzDJk8n1.js     5.76 kB │ gzip:  2.01 kB\ndist/assets/index-CkU02HGm.js       96.07 kB │ gzip: 37.52 kB\n✓ built in 872ms\n",
+          "duration": 2416
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Display status/module counts using /api/features/stats and refresh on list changes | 展示状态/模块统计并在数据变更时刷新 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Implementation loads and renders stats from /api/features/stats via loadStats and fetchStats, showing status/module counts in the HomeView template.\n> 实现在 HomeView 中通过 loadStats 和 fetchStats 调用 /api/features/stats 并渲染状态/模块计数。\nStats reload whenever the feature list is loaded (including filter changes) and after inline status updates, satisfying the refresh requirement.\n> 每次加载特性列表（包含筛选变更）以及行内状态更新后都会重新获取统计数据，符合刷新需求。\nNo automated tests cover this behavior, so verification relies on code inspection.\n> 目前没有自动化测试覆盖该行为，验证基于代码检查。",
+          "evidence": [
+            "frontend/src/views/HomeView.vue:37",
+            "frontend/src/views/HomeView.vue:46-63",
+            "frontend/src/views/HomeView.vue:83-100",
+            "frontend/src/views/HomeView.vue:118-162",
+            "frontend/src/api.ts:61-63",
+            "frontend/package.json:6-10"
+          ],
+          "confidence": 0.73
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "Feature stats are fetched from /api/features/stats and displayed with counts by status and module, with refreshes tied to list loads and status changes; however, there is no automated test coverage so assurance is based on code review.\n> 统计数据从 /api/features/stats 获取并展示状态与模块计数，且在列表加载和状态变更时刷新；但缺少自动化测试，结论基于代码审查。",
+      "suggestions": [
+        "Add unit or e2e tests to validate stats refresh after filter changes and status updates.\n> 添加单元或端到端测试以验证筛选变更和状态更新后的统计刷新。"
+      ],
+      "codeQualityNotes": [
+        "No test suite is configured for the frontend, leaving the stats view untested.\n> 前端未配置测试套件，统计视图缺乏自动化测试覆盖。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "frontend.features.local-preferences": {
+      "featureId": "frontend.features.local-preferences",
+      "timestamp": "2025-11-30T13:01:05.793Z",
+      "commitHash": "c7a2aee0aa9bed31da21f6b455a043a0db11c905",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "typecheck",
+          "success": true,
+          "output": "",
+          "duration": 1574
+        },
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard-backend@1.0.0 build\n> tsc\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-C9-yKpg3.css      11.39 kB │ gzip:  2.95 kB\ndist/assets/api-CNaMUVfq.js          0.83 kB │ gzip:  0.40 kB\ndist/assets/CreateView-BFOVnWQQ.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-CsgcVJWV.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/HomeView-C0ktTNuH.js     6.11 kB │ gzip:  2.15 kB\ndist/assets/index-KI_G-bNh.js       96.07 kB │ gzip: 37.51 kB\n✓ built in 879ms\n",
+          "duration": 2438
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Persist last-used filters to localStorage with URL taking precedence | 将最近过滤条件存入 localStorage，URL 优先 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Filters are saved to localStorage whenever status/module filters change, and URL params are updated simultaneously (frontend/src/views/HomeView.vue:41-124).\n> 当状态/模块过滤器变化时，会将过滤条件保存到 localStorage，并同步更新 URL 参数（frontend/src/views/HomeView.vue:41-124）。\nSync logic prioritizes URL query params and only falls back to stored filters when no URL params are present (frontend/src/views/HomeView.vue:96-110), so URL wins over saved preferences.\n> 同步逻辑优先使用 URL 查询参数，只有在没有 URL 参数时才回退到已存储的过滤条件（frontend/src/views/HomeView.vue:96-110），因此 URL 优先。\nNo automated tests cover this behaviour, so verification relies on code inspection only.\n> 该行为目前没有自动化测试覆盖，因此验证仅基于代码阅读。",
+          "evidence": [
+            "frontend/src/views/HomeView.vue:41-47",
+            "frontend/src/views/HomeView.vue:50-110",
+            "frontend/src/views/HomeView.vue:120-125"
+          ],
+          "confidence": 0.74
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "Code implements filter persistence to localStorage and applies URL query params with precedence before loading stored values, matching the requirement, but lacks automated test coverage so confidence is moderate.\n> 代码实现了过滤条件持久化到 localStorage，并在加载时先应用 URL 查询参数再回退到存储值，符合需求，但缺少自动化测试覆盖，信心度中等。",
+      "suggestions": [
+        "Add unit/e2e tests to assert URL query params override stored filters and that changing filters updates both URL and localStorage.\n> 添加单元/端到端测试，验证 URL 查询参数覆盖已存储过滤条件，以及过滤器变更会同时更新 URL 和 localStorage。"
+      ],
+      "codeQualityNotes": [
+        "Feature works by code inspection only; consider adding tests to guard persistence and precedence behaviour.\n> 目前仅通过代码阅读确认功能；建议增加测试保护持久化与优先级行为。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "e2e.tests.core-flows": {
+      "featureId": "e2e.tests.core-flows",
+      "timestamp": "2025-11-30T13:05:03.665Z",
+      "commitHash": "6643f351ca8ae0a17240e6db51b1690b713659da",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard@1.0.0 build\n> npm run build --prefix frontend\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-C9-yKpg3.css      11.39 kB │ gzip:  2.95 kB\ndist/assets/api-CNaMUVfq.js          0.83 kB │ gzip:  0.40 kB\ndist/assets/CreateView-BFOVnWQQ.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-CsgcVJWV.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/HomeView-C0ktTNuH.js     6.11 kB │ gzip:  2.15 kB\ndist/assets/index-KI_G-bNh.js       96.07 kB │ gzip: 37.51 kB\n✓ built in 1.13s\n",
+          "duration": 2329
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "Playwright scenarios for empty state, create, edit/status change, filter, and delete/stat-refresh | Playwright 覆盖空列表、创建、编辑/状态流转、过滤及删除与统计刷新 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Playwright spec implements six scenarios covering empty state, creation, inline status change, filtering, deletion with stats refresh, and edit flows, each asserting UI outcomes and persistence (tests/e2e/featureboard.spec.ts:16-175). > Playwright 用例实现了覆盖空状态、创建、内联状态变更、过滤、删除及统计刷新，以及编辑流程的六个场景，并验证界面结果和持久化（tests/e2e/featureboard.spec.ts:16-175）。 Frontend logic supports these flows: HomeView handles filtering, inline status update with stats reload, and empty state rendering (frontend/src/views/HomeView.vue:71-235); CreateView and EditView provide create/edit forms used by tests (frontend/src/views/CreateView.vue:39-155, frontend/src/views/EditView.vue:62-186). > 前端逻辑支撑这些流程：HomeView 负责过滤、内联状态更新并刷新统计以及空状态渲染（frontend/src/views/HomeView.vue:71-235）；CreateView 和 EditView 提供被测试使用的创建/编辑表单（frontend/src/views/CreateView.vue:39-155，frontend/src/views/EditView.vue:62-186）。",
+          "evidence": [
+            "tests/e2e/featureboard.spec.ts:16-175",
+            "frontend/src/views/HomeView.vue:71-235",
+            "frontend/src/views/CreateView.vue:39-155",
+            "frontend/src/views/EditView.vue:62-186"
+          ],
+          "confidence": 0.91
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "All acceptance flows are explicitly covered by Playwright E2E cases and backed by corresponding Vue implementations for list display, filtering, inline status changes, stats refresh, creation, and editing (tests/e2e/featureboard.spec.ts:16-175; frontend/src/views/*.vue). > 所有验收流程都由 Playwright 端到端用例明确覆盖，并由相应的 Vue 实现支撑列表展示、过滤、内联状态变更、统计刷新、创建与编辑功能（tests/e2e/featureboard.spec.ts:16-175；frontend/src/views/*.vue）。",
+      "suggestions": [
+        "Consider adding a UI delete control so the delete/stat-refresh scenario can operate via the frontend rather than direct API calls. > 建议增加前端删除控件，使删除/统计刷新场景无需直接调用 API。"
+      ],
+      "codeQualityNotes": [
+        "E2E tests reset backend state before each run, keeping scenarios isolated and reliable. > 端到端测试在每次运行前重置后端状态，保持场景独立且可靠。"
+      ],
+      "relatedFilesAnalyzed": []
+    },
+    "tooling.scripts.dev": {
+      "featureId": "tooling.scripts.dev",
+      "timestamp": "2025-11-30T13:07:43.396Z",
+      "commitHash": "f73869bd1622a0e6f3fb2c2bc82da50fefcfae4a",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "build",
+          "success": true,
+          "output": "\n> featureboard@1.0.0 build\n> npm run build --prefix frontend\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1579 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-C9-yKpg3.css      11.39 kB │ gzip:  2.95 kB\ndist/assets/api-CNaMUVfq.js          0.83 kB │ gzip:  0.40 kB\ndist/assets/CreateView-BFOVnWQQ.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-CsgcVJWV.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/HomeView-C0ktTNuH.js     6.11 kB │ gzip:  2.15 kB\ndist/assets/index-KI_G-bNh.js       96.07 kB │ gzip: 37.51 kB\n✓ built in 1.10s\n",
+          "duration": 2304
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "NPM scripts to run backend, frontend, and concurrent dev server | NPM 脚本统一启动前后端与并行开发服务 works as expected",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Root npm scripts expose backend, frontend, and combined dev commands: `npm run dev` starts both via concurrently, while `dev:backend` and `dev:frontend` delegate to their packages for individual runs (package.json:6-13).\n> 根级 npm 脚本提供后端、前端及组合开发命令：`npm run dev` 通过 concurrently 同时启动两端，而 `dev:backend` 和 `dev:frontend` 分别委派到各自子包以单独运行（package.json:6-13）。\nBackend package runs its server with `tsx watch src/index.ts` for live reload, and frontend package runs the Vite dev server via `vite`, matching expected dev entrypoints for each service (backend/package.json:5-8; frontend/package.json:6-9).\n> 后端子包使用 `tsx watch src/index.ts` 启动带热重载的服务，前端子包用 `vite` 启动 Vite 开发服务器，符合各服务的预期开发入口（backend/package.json:5-8；frontend/package.json:6-9）。\nNo automated tests target these scripts, but manifest wiring and prior build success indicate they are ready for use; a manual smoke run would further confirm runtime behavior.\n> 目前没有自动化测试覆盖这些脚本，但清单连线和已通过的构建表明它们可直接使用；进行一次手动冒烟运行可进一步确认运行时行为。",
+          "evidence": [
+            "package.json:6",
+            "package.json:8",
+            "package.json:9",
+            "package.json:10",
+            "backend/package.json:6",
+            "frontend/package.json:7"
+          ],
+          "confidence": 0.76
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "All required npm scripts exist and point to functioning backend/front-end dev entrypoints plus a concurrent runner, aligning with the acceptance criterion; lack of automated script-specific tests slightly lowers certainty.\n> 所需的 npm 脚本齐备，并指向可用的前后端开发入口及并行启动命令，符合验收标准；虽缺少针对脚本的自动化测试，略微降低了确定性。",
+      "suggestions": [
+        "Add a short README snippet showing how to run `npm run dev`, `npm run dev:backend`, and `npm run dev:frontend` for quick reference.\n> 添加简短的 README 说明，列出如何运行 `npm run dev`、`npm run dev:backend` 和 `npm run dev:frontend` 以便快速查阅。",
+        "Create a smoke test or CI step that launches `npm run dev` briefly and verifies both ports respond to confirm runtime wiring.\n> 添加一个冒烟测试或 CI 步骤，短暂启动 `npm run dev` 并验证两个端口响应，以确认运行时连线。"
+      ],
+      "codeQualityNotes": [
+        "No automated checks currently validate the dev scripts’ runtime start-up; consider adding one to catch regressions early.\n> 当前没有自动化检查验证开发脚本的运行启动；建议增加此类检查以及早发现回归。"
+      ],
+      "relatedFilesAnalyzed": []
+    }
+  },
+  "updatedAt": "2025-11-30T13:07:43.398Z",
+  "version": "1.0.0"
+}
