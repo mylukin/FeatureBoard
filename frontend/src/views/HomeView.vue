@@ -130,9 +130,17 @@ onMounted(() => {
             {{ feature.status }}
           </span>
         </div>
-        <div class="mt-2 flex items-center gap-4 text-sm text-gray-500">
-          <span>Module: {{ feature.module }}</span>
-          <span>Priority: {{ feature.priority }}</span>
+        <div class="mt-2 flex items-center justify-between">
+          <div class="flex items-center gap-4 text-sm text-gray-500">
+            <span>Module: {{ feature.module }}</span>
+            <span>Priority: {{ feature.priority }}</span>
+          </div>
+          <router-link
+            :to="`/edit/${feature.id}`"
+            class="text-sm text-blue-600 hover:text-blue-800 font-medium"
+          >
+            Edit
+          </router-link>
         </div>
       </div>
     </div>

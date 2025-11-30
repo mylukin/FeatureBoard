@@ -235,7 +235,7 @@
       "description": "Enable editing existing feature with prefilled form and PUT submission | 支持编辑功能项，表单回填并提交 PUT 更新",
       "module": "frontend-app",
       "priority": 20,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Enable editing existing feature with prefilled form and PUT submission | 支持编辑功能项，表单回填并提交 PUT 更新 works as expected"
       ],
@@ -246,7 +246,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:52:54.541Z",
+        "verdict": "needs_review",
+        "verifiedBy": "codex",
+        "commitHash": "3d95d8b073483b9c984ecd62a8f33de9bddb6b4c",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.state-transition",
@@ -342,7 +349,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:49:12.531Z",
+    "updatedAt": "2025-11-30T12:52:54.545Z",
     "version": "1.0.0"
   }
 }

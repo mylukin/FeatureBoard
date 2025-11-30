@@ -5,60 +5,42 @@
     "testCommand": null,
     "testFramework": null,
     "hasTypeCheck": true,
-    "typeCheckCommand": "cd backend && npm run build",
+    "typeCheckCommand": "cd backend && npx tsc --noEmit && cd ../frontend && npx vue-tsc --noEmit",
     "hasLint": false,
     "lintCommand": null,
     "hasBuild": true,
     "buildCommand": "cd backend && npm run build && cd ../frontend && npm run build",
     "hasGit": true,
     "source": "ai-discovered",
-    "confidence": 0.28500000000000003,
+    "confidence": 0.37749999999999995,
     "languages": [
-      "TypeScript"
+      "TypeScript",
+      "Vue",
+      "Shell"
     ],
-    "detectedAt": "2025-11-30T12:47:44.668Z",
+    "detectedAt": "2025-11-30T12:51:07.127Z",
     "testInfo": {
       "available": false,
       "command": null,
       "framework": null,
-      "confidence": 0.1
+      "confidence": 0.2
     },
     "typeCheckInfo": {
       "available": true,
-      "command": "cd backend && npm run build",
-      "confidence": 0.46
+      "command": "cd backend && npx tsc --noEmit && cd ../frontend && npx vue-tsc --noEmit",
+      "confidence": 0.53
     },
     "lintInfo": {
       "available": false,
       "command": null,
-      "confidence": 0.1
+      "confidence": 0.2
     },
     "buildInfo": {
       "available": true,
       "command": "cd backend && npm run build && cd ../frontend && npm run build",
-      "confidence": 0.48
-    },
-    "customRules": [
-      {
-        "id": "typecheck-frontend",
-        "description": "Type-check Vue code with vue-tsc",
-        "command": "cd frontend && npx vue-tsc --noEmit",
-        "type": "typecheck"
-      },
-      {
-        "id": "build-backend",
-        "description": "Compile backend TypeScript",
-        "command": "cd backend && npm run build",
-        "type": "build"
-      },
-      {
-        "id": "build-frontend",
-        "description": "Build frontend with Vue/Vite",
-        "command": "cd frontend && npm run build",
-        "type": "build"
-      }
-    ]
+      "confidence": 0.58
+    }
   },
-  "commitHash": "8a384c52f3fae2b983041338e461603b1957673f",
+  "commitHash": "3d95d8b073483b9c984ecd62a8f33de9bddb6b4c",
   "trackedFiles": []
 }
