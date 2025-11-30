@@ -360,7 +360,7 @@
       "description": "NPM scripts to run backend, frontend, and concurrent dev server | NPM 脚本统一启动前后端与并行开发服务",
       "module": "tooling-docs",
       "priority": 25,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "NPM scripts to run backend, frontend, and concurrent dev server | NPM 脚本统一启动前后端与并行开发服务 works as expected"
       ],
@@ -371,13 +371,20 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T13:07:43.396Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "f73869bd1622a0e6f3fb2c2bc82da50fefcfae4a",
+        "summary": "1/1 criteria satisfied"
+      }
     }
   ],
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T13:05:03.667Z",
+    "updatedAt": "2025-11-30T13:07:43.400Z",
     "version": "1.0.0"
   }
 }
