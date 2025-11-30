@@ -1,0 +1,313 @@
+{
+  "$schema": "./feature_list.schema.json",
+  "features": [
+    {
+      "id": "database.schema.init",
+      "description": "Bootstrap SQLite schema for features with defaults and timestamps | 初始化 SQLite 功能项表，含默认值和时间戳",
+      "module": "database",
+      "priority": 10,
+      "status": "passing",
+      "acceptance": [
+        "Bootstrap SQLite schema for features with defaults and timestamps | 初始化 SQLite 功能项表，含默认值和时间戳 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": "Created SQLite schema with features table, auto-timestamps, and update trigger",
+      "verification": {
+        "verifiedAt": "2025-11-30T11:57:31.259Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "unknown",
+        "summary": "1/1 criteria satisfied"
+      }
+    },
+    {
+      "id": "api.features.crud",
+      "description": "Expose RESTful CRUD at /api/features with JSON responses and proper errors | 在 /api/features 提供 RESTful CRUD，返回 JSON 并处理错误状态码",
+      "module": "backend-api",
+      "priority": 11,
+      "status": "passing",
+      "acceptance": [
+        "Expose RESTful CRUD at /api/features with JSON responses and proper errors | 在 /api/features 提供 RESTful CRUD，返回 JSON 并处理错误状态码 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:11:59.540Z",
+        "verdict": "needs_review",
+        "verifiedBy": "codex",
+        "commitHash": "unknown",
+        "summary": "1/1 criteria satisfied"
+      }
+    },
+    {
+      "id": "api.features.filter-query",
+      "description": "Support status/module query filtering on GET /api/features | GET /api/features 支持 status/module 查询过滤",
+      "module": "backend-api",
+      "priority": 12,
+      "status": "passing",
+      "acceptance": [
+        "Support status/module query filtering on GET /api/features | GET /api/features 支持 status/module 查询过滤 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "api.features.stats",
+      "description": "Provide GET /api/features/stats summarizing counts by status and module | 提供 GET /api/features/stats 汇总状态与模块数量",
+      "module": "backend-api",
+      "priority": 13,
+      "status": "passing",
+      "acceptance": [
+        "Provide GET /api/features/stats summarizing counts by status and module | 提供 GET /api/features/stats 汇总状态与模块数量 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "api.features.validation",
+      "description": "Validate incoming payloads with defaults (status=todo, priority=3) and return {error} on bad input | 校验请求载荷并应用默认值，错误时返回 {error}",
+      "module": "backend-api",
+      "priority": 14,
+      "status": "passing",
+      "acceptance": [
+        "Validate incoming payloads with defaults (status=todo, priority=3) and return {error} on bad input | 校验请求载荷并应用默认值，错误时返回 {error} works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.shell.layout",
+      "description": "Build SPA shell with header/title and global loading/error handling | 构建含标题栏及全局加载/错误提示的单页框架",
+      "module": "frontend-app",
+      "priority": 15,
+      "status": "failing",
+      "acceptance": [
+        "Build SPA shell with header/title and global loading/error handling | 构建含标题栏及全局加载/错误提示的单页框架 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.list-view",
+      "description": "Render feature list (title/module/status/priority) using API data with empty states | 使用 API 数据展示功能列表含空状态",
+      "module": "frontend-app",
+      "priority": 16,
+      "status": "failing",
+      "acceptance": [
+        "Render feature list (title/module/status/priority) using API data with empty states | 使用 API 数据展示功能列表含空状态 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.filters-ui",
+      "description": "Add status/module filter controls above list and bind to API queries | 列表上方添加状态/模块过滤控件并驱动查询",
+      "module": "frontend-app",
+      "priority": 17,
+      "status": "failing",
+      "acceptance": [
+        "Add status/module filter controls above list and bind to API queries | 列表上方添加状态/模块过滤控件并驱动查询 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.url-sync",
+      "description": "Sync filters to URL query params and hydrate state on refresh | 将过滤条件同步到 URL 并在刷新时恢复",
+      "module": "frontend-app",
+      "priority": 18,
+      "status": "failing",
+      "acceptance": [
+        "Sync filters to URL query params and hydrate state on refresh | 将过滤条件同步到 URL 并在刷新时恢复 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.form-create",
+      "description": "Provide create form dialog/route with validation to POST /api/features | 提供创建表单对话框/路由，校验后提交 POST /api/features",
+      "module": "frontend-app",
+      "priority": 19,
+      "status": "failing",
+      "acceptance": [
+        "Provide create form dialog/route with validation to POST /api/features | 提供创建表单对话框/路由，校验后提交 POST /api/features works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.form-edit",
+      "description": "Enable editing existing feature with prefilled form and PUT submission | 支持编辑功能项，表单回填并提交 PUT 更新",
+      "module": "frontend-app",
+      "priority": 20,
+      "status": "failing",
+      "acceptance": [
+        "Enable editing existing feature with prefilled form and PUT submission | 支持编辑功能项，表单回填并提交 PUT 更新 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.state-transition",
+      "description": "Offer inline status change control (advance or select) with optimistic UI update | 列表内提供状态切换控件并乐观更新 UI",
+      "module": "frontend-app",
+      "priority": 21,
+      "status": "failing",
+      "acceptance": [
+        "Offer inline status change control (advance or select) with optimistic UI update | 列表内提供状态切换控件并乐观更新 UI works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.stats-view",
+      "description": "Display status/module counts using /api/features/stats and refresh on list changes | 展示状态/模块统计并在数据变更时刷新",
+      "module": "frontend-app",
+      "priority": 22,
+      "status": "failing",
+      "acceptance": [
+        "Display status/module counts using /api/features/stats and refresh on list changes | 展示状态/模块统计并在数据变更时刷新 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "frontend.features.local-preferences",
+      "description": "Persist last-used filters to localStorage with URL taking precedence | 将最近过滤条件存入 localStorage，URL 优先",
+      "module": "frontend-app",
+      "priority": 23,
+      "status": "failing",
+      "acceptance": [
+        "Persist last-used filters to localStorage with URL taking precedence | 将最近过滤条件存入 localStorage，URL 优先 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "e2e.tests.core-flows",
+      "description": "Playwright scenarios for empty state, create, edit/status change, filter, and delete/stat-refresh | Playwright 覆盖空列表、创建、编辑/状态流转、过滤及删除与统计刷新",
+      "module": "e2e-tests",
+      "priority": 24,
+      "status": "failing",
+      "acceptance": [
+        "Playwright scenarios for empty state, create, edit/status change, filter, and delete/stat-refresh | Playwright 覆盖空列表、创建、编辑/状态流转、过滤及删除与统计刷新 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    },
+    {
+      "id": "tooling.scripts.dev",
+      "description": "NPM scripts to run backend, frontend, and concurrent dev server | NPM 脚本统一启动前后端与并行开发服务",
+      "module": "tooling-docs",
+      "priority": 25,
+      "status": "failing",
+      "acceptance": [
+        "NPM scripts to run backend, frontend, and concurrent dev server | NPM 脚本统一启动前后端与并行开发服务 works as expected"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "goal"
+      ],
+      "version": 1,
+      "origin": "init-auto",
+      "notes": ""
+    }
+  ],
+  "metadata": {
+    "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
+    "createdAt": "2025-11-30T11:45:20.915Z",
+    "updatedAt": "2025-11-30T12:11:59.541Z",
+    "version": "1.0.0"
+  }
+}

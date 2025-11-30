@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "capabilities": {
+    "hasTests": false,
+    "testCommand": "",
+    "testFramework": "",
+    "hasTypeCheck": true,
+    "typeCheckCommand": "cd backend && npx tsc --noEmit",
+    "hasLint": false,
+    "lintCommand": "",
+    "hasBuild": true,
+    "buildCommand": "cd backend && npm run build",
+    "hasGit": true,
+    "source": "ai-discovered",
+    "confidence": 0.345,
+    "languages": [
+      "TypeScript",
+      "Shell"
+    ],
+    "detectedAt": "2025-11-30T12:10:09.063Z",
+    "testInfo": {
+      "available": false,
+      "command": "",
+      "framework": "",
+      "confidence": 0.15
+    },
+    "typeCheckInfo": {
+      "available": true,
+      "command": "cd backend && npx tsc --noEmit",
+      "confidence": 0.44
+    },
+    "lintInfo": {
+      "available": false,
+      "command": "",
+      "confidence": 0.15
+    },
+    "buildInfo": {
+      "available": true,
+      "command": "cd backend && npm run build",
+      "confidence": 0.64
+    }
+  },
+  "trackedFiles": []
+}
