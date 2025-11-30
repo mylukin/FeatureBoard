@@ -135,7 +135,7 @@
       "description": "Render feature list (title/module/status/priority) using API data with empty states | 使用 API 数据展示功能列表含空状态",
       "module": "frontend-app",
       "priority": 16,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Render feature list (title/module/status/priority) using API data with empty states | 使用 API 数据展示功能列表含空状态 works as expected"
       ],
@@ -146,7 +146,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:40:04.656Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "023c18f17fa81d56c5d558275f8b0825c1672ebd",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.filters-ui",
@@ -314,7 +321,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:37:36.773Z",
+    "updatedAt": "2025-11-30T12:40:04.657Z",
     "version": "1.0.0"
   }
 }

@@ -5,62 +5,41 @@
     "testCommand": null,
     "testFramework": null,
     "hasTypeCheck": true,
-    "typeCheckCommand": "cd backend && npm run build",
+    "typeCheckCommand": "npm --prefix backend run build && npm --prefix frontend run build",
     "hasLint": false,
     "lintCommand": null,
     "hasBuild": true,
-    "buildCommand": "cd backend && npm run build && cd ../frontend && npm run build",
+    "buildCommand": "npm --prefix backend run build && npm --prefix frontend run build",
     "hasGit": true,
     "source": "ai-discovered",
-    "confidence": 0.295,
+    "confidence": 0.3175,
     "languages": [
       "TypeScript",
-      "JavaScript",
-      "Shell"
+      "Vue"
     ],
-    "detectedAt": "2025-11-30T12:33:11.881Z",
+    "detectedAt": "2025-11-30T12:38:28.107Z",
     "testInfo": {
       "available": false,
       "command": null,
       "framework": null,
-      "confidence": 0.15
+      "confidence": 0.12
     },
     "typeCheckInfo": {
       "available": true,
-      "command": "cd backend && npm run build",
+      "command": "npm --prefix backend run build && npm --prefix frontend run build",
       "confidence": 0.46
     },
     "lintInfo": {
       "available": false,
       "command": null,
-      "confidence": 0.15
+      "confidence": 0.14
     },
     "buildInfo": {
       "available": true,
-      "command": "cd backend && npm run build && cd ../frontend && npm run build",
-      "confidence": 0.42
-    },
-    "customRules": [
-      {
-        "id": "frontend-typecheck",
-        "description": "Type-check and build frontend via vue-tsc and Vite",
-        "command": "cd frontend && npm run build",
-        "type": "typecheck"
-      },
-      {
-        "id": "frontend-build",
-        "description": "Build frontend",
-        "command": "cd frontend && npm run build",
-        "type": "build"
-      },
-      {
-        "id": "backend-build",
-        "description": "Type-check backend (tsc)",
-        "command": "cd backend && npm run build",
-        "type": "build"
-      }
-    ]
+      "command": "npm --prefix backend run build && npm --prefix frontend run build",
+      "confidence": 0.55
+    }
   },
-  "commitHash": "d96815f80792b9f681c4669ec55189b713b4a73b",
+  "commitHash": "023c18f17fa81d56c5d558275f8b0825c1672ebd",
   "trackedFiles": []
 }
