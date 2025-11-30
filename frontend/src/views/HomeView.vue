@@ -34,6 +34,31 @@ const featureStatusOptions: { value: FeatureStatus; label: string }[] = [
 // Computed unique modules from features (will be populated after initial load)
 const moduleOptions = ref<string[]>([]);
 
+// LocalStorage key for filter preferences
+const FILTERS_STORAGE_KEY = 'featureboard_filters';
+
+// Save filters to localStorage
+function saveFiltersToStorage() {
+  const filters = {
+    status: statusFilter.value,
+    module: moduleFilter.value,
+  };
+  localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(filters));
+}
+
+// Load filters from localStorage
+function loadFiltersFromStorage(): { status: string; module: string } | null {
+  try {
+    const stored = localStorage.getItem(FILTERS_STORAGE_KEY);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch {
+    // Ignore parse errors
+  }
+  return null;
+}
+
 async function loadStats() {
   try {
     stats.value = await fetchStats();
@@ -67,10 +92,22 @@ async function loadFeatures() {
   }
 }
 
-// Sync filters with URL query params
+// Sync filters with URL query params (URL takes precedence over localStorage)
 function syncFiltersFromUrl() {
-  statusFilter.value = (route.query.status as string) || '';
-  moduleFilter.value = (route.query.module as string) || '';
+  const hasUrlParams = route.query.status !== undefined || route.query.module !== undefined;
+
+  if (hasUrlParams) {
+    // URL parameters take precedence
+    statusFilter.value = (route.query.status as string) || '';
+    moduleFilter.value = (route.query.module as string) || '';
+  } else {
+    // Fall back to localStorage if no URL params
+    const stored = loadFiltersFromStorage();
+    if (stored) {
+      statusFilter.value = stored.status || '';
+      moduleFilter.value = stored.module || '';
+    }
+  }
 }
 
 function updateUrlParams() {
@@ -83,6 +120,7 @@ function updateUrlParams() {
 // Watch for filter changes and reload
 watch([statusFilter, moduleFilter], () => {
   updateUrlParams();
+  saveFiltersToStorage();
   loadFeatures();
 });
 
