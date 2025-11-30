@@ -285,7 +285,7 @@
       "description": "Display status/module counts using /api/features/stats and refresh on list changes | 展示状态/模块统计并在数据变更时刷新",
       "module": "frontend-app",
       "priority": 22,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Display status/module counts using /api/features/stats and refresh on list changes | 展示状态/模块统计并在数据变更时刷新 works as expected"
       ],
@@ -296,7 +296,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:58:41.422Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "65a5828a5cce188384bf4d13eeb9d37d18557ce6",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.local-preferences",
@@ -356,7 +363,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:55:44.505Z",
+    "updatedAt": "2025-11-30T12:58:41.424Z",
     "version": "1.0.0"
   }
 }

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, inject, onMounted, watch, type Ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { fetchFeatures, updateFeature } from '../api';
-import type { Feature, FeatureStatus } from '../types';
+import { fetchFeatures, fetchStats, updateFeature } from '../api';
+import type { Feature, FeatureStatus, FeatureStats } from '../types';
 
 // Inject global state from App.vue
 const globalLoading = inject<Ref<boolean>>('globalLoading')!;
@@ -12,6 +12,7 @@ const route = useRoute();
 const router = useRouter();
 
 const features = ref<Feature[]>([]);
+const stats = ref<FeatureStats | null>(null);
 const statusFilter = ref<string>('');
 const moduleFilter = ref<string>('');
 
@@ -33,6 +34,15 @@ const featureStatusOptions: { value: FeatureStatus; label: string }[] = [
 // Computed unique modules from features (will be populated after initial load)
 const moduleOptions = ref<string[]>([]);
 
+async function loadStats() {
+  try {
+    stats.value = await fetchStats();
+  } catch (err) {
+    // Stats loading failure is non-critical
+    console.error('Failed to load stats:', err);
+  }
+}
+
 async function loadFeatures() {
   globalLoading.value = true;
   globalError.value = null;
@@ -47,6 +57,9 @@ async function loadFeatures() {
       const modules = new Set(features.value.map(f => f.module));
       moduleOptions.value = Array.from(modules).sort();
     }
+
+    // Refresh stats whenever features are loaded
+    await loadStats();
   } catch (err) {
     globalError.value = err instanceof Error ? err.message : 'Failed to load features';
   } finally {
@@ -82,6 +95,8 @@ async function handleStatusChange(feature: Feature, newStatus: FeatureStatus) {
 
   try {
     await updateFeature(feature.id, { status: newStatus });
+    // Refresh stats after status change
+    await loadStats();
   } catch (err) {
     // Rollback on error
     feature.status = oldStatus;
@@ -98,6 +113,54 @@ onMounted(() => {
 <template>
   <div>
     <h1 class="text-2xl font-bold text-gray-900 mb-6">Features</h1>
+
+    <!-- Stats View -->
+    <div v-if="stats" class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Status Stats -->
+      <div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+        <h3 class="text-sm font-medium text-gray-500 mb-3">By Status</h3>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-800 text-sm font-semibold">
+              {{ stats.byStatus.todo || 0 }}
+            </span>
+            <span class="text-sm text-gray-600">To Do</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">
+              {{ stats.byStatus.doing || 0 }}
+            </span>
+            <span class="text-sm text-gray-600">In Progress</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-800 text-sm font-semibold">
+              {{ stats.byStatus.done || 0 }}
+            </span>
+            <span class="text-sm text-gray-600">Done</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module Stats -->
+      <div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+        <h3 class="text-sm font-medium text-gray-500 mb-3">By Module</h3>
+        <div class="flex flex-wrap items-center gap-3">
+          <div
+            v-for="(count, moduleName) in stats.byModule"
+            :key="moduleName"
+            class="flex items-center gap-2"
+          >
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-gray-100 text-gray-800 text-xs font-semibold">
+              {{ count }}
+            </span>
+            <span class="text-sm text-gray-600">{{ moduleName }}</span>
+          </div>
+          <div v-if="Object.keys(stats.byModule).length === 0" class="text-sm text-gray-400">
+            No modules yet
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Filter Controls -->
     <div class="mb-6 flex flex-wrap gap-4">
