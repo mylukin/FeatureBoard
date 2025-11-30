@@ -5,19 +5,19 @@
     "testCommand": null,
     "testFramework": null,
     "hasTypeCheck": true,
-    "typeCheckCommand": "npm --prefix backend run build && npm --prefix frontend run build",
+    "typeCheckCommand": "cd backend && npx tsc --noEmit",
     "hasLint": false,
     "lintCommand": null,
     "hasBuild": true,
-    "buildCommand": "npm --prefix backend run build && npm --prefix frontend run build",
+    "buildCommand": "cd frontend && npm run build",
     "hasGit": true,
     "source": "ai-discovered",
-    "confidence": 0.3175,
+    "confidence": 0.355,
     "languages": [
       "TypeScript",
       "Vue"
     ],
-    "detectedAt": "2025-11-30T12:38:28.107Z",
+    "detectedAt": "2025-11-30T12:41:32.240Z",
     "testInfo": {
       "available": false,
       "command": null,
@@ -26,20 +26,34 @@
     },
     "typeCheckInfo": {
       "available": true,
-      "command": "npm --prefix backend run build && npm --prefix frontend run build",
-      "confidence": 0.46
+      "command": "cd backend && npx tsc --noEmit",
+      "confidence": 0.58
     },
     "lintInfo": {
       "available": false,
       "command": null,
-      "confidence": 0.14
+      "confidence": 0.1
     },
     "buildInfo": {
       "available": true,
-      "command": "npm --prefix backend run build && npm --prefix frontend run build",
-      "confidence": 0.55
-    }
+      "command": "cd frontend && npm run build",
+      "confidence": 0.62
+    },
+    "customRules": [
+      {
+        "id": "typecheck-frontend",
+        "description": "Type-check the Vue frontend",
+        "command": "cd frontend && npx vue-tsc --noEmit",
+        "type": "typecheck"
+      },
+      {
+        "id": "build-backend",
+        "description": "Build the backend TypeScript server",
+        "command": "cd backend && npm run build",
+        "type": "build"
+      }
+    ]
   },
-  "commitHash": "023c18f17fa81d56c5d558275f8b0825c1672ebd",
+  "commitHash": "8f823850f67761197f6657b2a0c1e2977ef4e60d",
   "trackedFiles": []
 }

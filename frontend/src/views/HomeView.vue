@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, inject, onMounted, type Ref } from 'vue';
+import { ref, inject, onMounted, watch, type Ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { fetchFeatures } from '../api';
 import type { Feature } from '../types';
 
@@ -7,13 +8,38 @@ import type { Feature } from '../types';
 const globalLoading = inject<Ref<boolean>>('globalLoading')!;
 const globalError = inject<Ref<string | null>>('globalError')!;
 
+const route = useRoute();
+const router = useRouter();
+
 const features = ref<Feature[]>([]);
+const statusFilter = ref<string>('');
+const moduleFilter = ref<string>('');
+
+// Available filter options
+const statusOptions: { value: string; label: string }[] = [
+  { value: '', label: 'All Status' },
+  { value: 'todo', label: 'To Do' },
+  { value: 'doing', label: 'In Progress' },
+  { value: 'done', label: 'Done' },
+];
+
+// Computed unique modules from features (will be populated after initial load)
+const moduleOptions = ref<string[]>([]);
 
 async function loadFeatures() {
   globalLoading.value = true;
   globalError.value = null;
   try {
-    features.value = await fetchFeatures();
+    const params: { status?: string; module?: string } = {};
+    if (statusFilter.value) params.status = statusFilter.value;
+    if (moduleFilter.value) params.module = moduleFilter.value;
+    features.value = await fetchFeatures(params);
+
+    // If no filters, update available modules
+    if (!statusFilter.value && !moduleFilter.value) {
+      const modules = new Set(features.value.map(f => f.module));
+      moduleOptions.value = Array.from(modules).sort();
+    }
   } catch (err) {
     globalError.value = err instanceof Error ? err.message : 'Failed to load features';
   } finally {
@@ -21,7 +47,27 @@ async function loadFeatures() {
   }
 }
 
+// Sync filters with URL query params
+function syncFiltersFromUrl() {
+  statusFilter.value = (route.query.status as string) || '';
+  moduleFilter.value = (route.query.module as string) || '';
+}
+
+function updateUrlParams() {
+  const query: Record<string, string> = {};
+  if (statusFilter.value) query.status = statusFilter.value;
+  if (moduleFilter.value) query.module = moduleFilter.value;
+  router.replace({ query });
+}
+
+// Watch for filter changes and reload
+watch([statusFilter, moduleFilter], () => {
+  updateUrlParams();
+  loadFeatures();
+});
+
 onMounted(() => {
+  syncFiltersFromUrl();
   loadFeatures();
 });
 </script>
@@ -30,12 +76,41 @@ onMounted(() => {
   <div>
     <h1 class="text-2xl font-bold text-gray-900 mb-6">Features</h1>
 
+    <!-- Filter Controls -->
+    <div class="mb-6 flex flex-wrap gap-4">
+      <div class="flex items-center gap-2">
+        <label for="status-filter" class="text-sm font-medium text-gray-700">Status:</label>
+        <select
+          id="status-filter"
+          v-model="statusFilter"
+          class="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+        >
+          <option v-for="opt in statusOptions" :key="opt.value" :value="opt.value">
+            {{ opt.label }}
+          </option>
+        </select>
+      </div>
+      <div class="flex items-center gap-2">
+        <label for="module-filter" class="text-sm font-medium text-gray-700">Module:</label>
+        <select
+          id="module-filter"
+          v-model="moduleFilter"
+          class="block w-40 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+        >
+          <option value="">All Modules</option>
+          <option v-for="mod in moduleOptions" :key="mod" :value="mod">
+            {{ mod }}
+          </option>
+        </select>
+      </div>
+    </div>
+
     <!-- Empty state -->
     <div v-if="!globalLoading && features.length === 0" class="text-center py-12">
       <p class="text-gray-500">No features found. Create your first feature!</p>
     </div>
 
-    <!-- Feature list placeholder -->
+    <!-- Feature list -->
     <div v-else-if="features.length > 0" class="space-y-4">
       <div
         v-for="feature in features"

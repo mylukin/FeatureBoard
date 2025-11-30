@@ -160,7 +160,7 @@
       "description": "Add status/module filter controls above list and bind to API queries | 列表上方添加状态/模块过滤控件并驱动查询",
       "module": "frontend-app",
       "priority": 17,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Add status/module filter controls above list and bind to API queries | 列表上方添加状态/模块过滤控件并驱动查询 works as expected"
       ],
@@ -171,7 +171,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:44:13.550Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "8f823850f67761197f6657b2a0c1e2977ef4e60d",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.url-sync",
@@ -321,7 +328,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:40:04.657Z",
+    "updatedAt": "2025-11-30T12:44:13.554Z",
     "version": "1.0.0"
   }
 }
