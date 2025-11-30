@@ -2,43 +2,65 @@
   "version": "1.0.0",
   "capabilities": {
     "hasTests": false,
-    "testCommand": "",
-    "testFramework": "",
+    "testCommand": null,
+    "testFramework": null,
     "hasTypeCheck": true,
-    "typeCheckCommand": "cd backend && npx tsc --noEmit",
+    "typeCheckCommand": "cd backend && npm run build",
     "hasLint": false,
-    "lintCommand": "",
+    "lintCommand": null,
     "hasBuild": true,
-    "buildCommand": "cd backend && npm run build",
+    "buildCommand": "cd backend && npm run build && cd ../frontend && npm run build",
     "hasGit": true,
     "source": "ai-discovered",
-    "confidence": 0.345,
+    "confidence": 0.295,
     "languages": [
       "TypeScript",
+      "JavaScript",
       "Shell"
     ],
-    "detectedAt": "2025-11-30T12:10:09.063Z",
+    "detectedAt": "2025-11-30T12:33:11.881Z",
     "testInfo": {
       "available": false,
-      "command": "",
-      "framework": "",
+      "command": null,
+      "framework": null,
       "confidence": 0.15
     },
     "typeCheckInfo": {
       "available": true,
-      "command": "cd backend && npx tsc --noEmit",
-      "confidence": 0.44
+      "command": "cd backend && npm run build",
+      "confidence": 0.46
     },
     "lintInfo": {
       "available": false,
-      "command": "",
+      "command": null,
       "confidence": 0.15
     },
     "buildInfo": {
       "available": true,
-      "command": "cd backend && npm run build",
-      "confidence": 0.64
-    }
+      "command": "cd backend && npm run build && cd ../frontend && npm run build",
+      "confidence": 0.42
+    },
+    "customRules": [
+      {
+        "id": "frontend-typecheck",
+        "description": "Type-check and build frontend via vue-tsc and Vite",
+        "command": "cd frontend && npm run build",
+        "type": "typecheck"
+      },
+      {
+        "id": "frontend-build",
+        "description": "Build frontend",
+        "command": "cd frontend && npm run build",
+        "type": "build"
+      },
+      {
+        "id": "backend-build",
+        "description": "Type-check backend (tsc)",
+        "command": "cd backend && npm run build",
+        "type": "build"
+      }
+    ]
   },
+  "commitHash": "d96815f80792b9f681c4669ec55189b713b4a73b",
   "trackedFiles": []
 }

@@ -110,7 +110,7 @@
       "description": "Build SPA shell with header/title and global loading/error handling | 构建含标题栏及全局加载/错误提示的单页框架",
       "module": "frontend-app",
       "priority": 15,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Build SPA shell with header/title and global loading/error handling | 构建含标题栏及全局加载/错误提示的单页框架 works as expected"
       ],
@@ -121,7 +121,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:37:36.769Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "d96815f80792b9f681c4669ec55189b713b4a73b",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.list-view",
@@ -307,7 +314,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:11:59.541Z",
+    "updatedAt": "2025-11-30T12:37:36.773Z",
     "version": "1.0.0"
   }
 }
