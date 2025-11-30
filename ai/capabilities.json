@@ -2,44 +2,49 @@
   "version": "1.0.0",
   "capabilities": {
     "hasTests": false,
-    "testCommand": "",
-    "testFramework": "",
+    "testCommand": null,
+    "testFramework": null,
     "hasTypeCheck": true,
-    "typeCheckCommand": "cd frontend && npx vue-tsc --noEmit",
+    "typeCheckCommand": "cd backend && npm run build",
     "hasLint": false,
-    "lintCommand": "",
+    "lintCommand": null,
     "hasBuild": true,
     "buildCommand": "cd backend && npm run build && cd ../frontend && npm run build",
     "hasGit": true,
     "source": "ai-discovered",
-    "confidence": 0.335,
+    "confidence": 0.28500000000000003,
     "languages": [
-      "TypeScript",
-      "JavaScript"
+      "TypeScript"
     ],
-    "detectedAt": "2025-11-30T12:44:57.690Z",
+    "detectedAt": "2025-11-30T12:47:44.668Z",
     "testInfo": {
       "available": false,
-      "command": "",
-      "framework": "",
-      "confidence": 0.2
+      "command": null,
+      "framework": null,
+      "confidence": 0.1
     },
     "typeCheckInfo": {
       "available": true,
-      "command": "cd frontend && npx vue-tsc --noEmit",
-      "confidence": 0.44
+      "command": "cd backend && npm run build",
+      "confidence": 0.46
     },
     "lintInfo": {
       "available": false,
-      "command": "",
-      "confidence": 0.15
+      "command": null,
+      "confidence": 0.1
     },
     "buildInfo": {
       "available": true,
       "command": "cd backend && npm run build && cd ../frontend && npm run build",
-      "confidence": 0.55
+      "confidence": 0.48
     },
     "customRules": [
+      {
+        "id": "typecheck-frontend",
+        "description": "Type-check Vue code with vue-tsc",
+        "command": "cd frontend && npx vue-tsc --noEmit",
+        "type": "typecheck"
+      },
       {
         "id": "build-backend",
         "description": "Compile backend TypeScript",
@@ -48,12 +53,12 @@
       },
       {
         "id": "build-frontend",
-        "description": "Type-check and build Vue frontend",
+        "description": "Build frontend with Vue/Vite",
         "command": "cd frontend && npm run build",
         "type": "build"
       }
     ]
   },
-  "commitHash": "806d6d19875d07b1ef7690058b44f09b742b8287",
+  "commitHash": "8a384c52f3fae2b983041338e461603b1957673f",
   "trackedFiles": []
 }

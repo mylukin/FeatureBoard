@@ -210,7 +210,7 @@
       "description": "Provide create form dialog/route with validation to POST /api/features | 提供创建表单对话框/路由，校验后提交 POST /api/features",
       "module": "frontend-app",
       "priority": 19,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Provide create form dialog/route with validation to POST /api/features | 提供创建表单对话框/路由，校验后提交 POST /api/features works as expected"
       ],
@@ -221,7 +221,14 @@
       ],
       "version": 1,
       "origin": "init-auto",
-      "notes": ""
+      "notes": "",
+      "verification": {
+        "verifiedAt": "2025-11-30T12:49:12.527Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "8a384c52f3fae2b983041338e461603b1957673f",
+        "summary": "1/1 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.form-edit",
@@ -335,7 +342,7 @@
   "metadata": {
     "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T12:46:28.304Z",
+    "updatedAt": "2025-11-30T12:49:12.531Z",
     "version": "1.0.0"
   }
 }
