@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.state-transition",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:55:44.503Z",
+  "commitHash": "ea81384c1e01ca742b0879365308d71f8333ca78",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 2761
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2891
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Offer inline status change control (advance or select) with optimistic UI update | 列表内提供状态切换控件并乐观更新 UI works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.72
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

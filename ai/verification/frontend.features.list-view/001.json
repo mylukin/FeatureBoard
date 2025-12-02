@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.list-view",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:40:04.656Z",
+  "commitHash": "023c18f17fa81d56c5d558275f8b0825c1672ebd",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 2303
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2258
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Render feature list (title/module/status/priority) using API data with empty states | 使用 API 数据展示功能列表含空状态 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.76
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

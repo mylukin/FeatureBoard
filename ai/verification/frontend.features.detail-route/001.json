@@ -1,0 +1,31 @@
+{
+  "featureId": "frontend.features.detail-route",
+  "runNumber": 1,
+  "timestamp": "2025-12-02T12:06:45.460Z",
+  "commitHash": "2d11eb1216e803c943ce45361533c5ca6078c9d8",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "init-script",
+      "success": false,
+      "duration": 41862
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Route /features/:id is defined in main.ts with lazy-loaded DetailView component",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.9
+    },
+    {
+      "criterion": "Navigating to /features/1 loads the detail page without errors",
+      "index": 1,
+      "satisfied": true,
+      "confidence": 0.76
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

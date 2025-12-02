@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.local-preferences",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T13:01:05.793Z",
+  "commitHash": "c7a2aee0aa9bed31da21f6b455a043a0db11c905",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 1574
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2438
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Persist last-used filters to localStorage with URL taking precedence | 将最近过滤条件存入 localStorage，URL 优先 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.74
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

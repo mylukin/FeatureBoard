@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.form-edit",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:52:54.541Z",
+  "commitHash": "3d95d8b073483b9c984ecd62a8f33de9bddb6b4c",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 1602
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2414
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Enable editing existing feature with prefilled form and PUT submission | 支持编辑功能项，表单回填并提交 PUT 更新 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.62
+    }
+  ],
+  "verdict": "needs_review",
+  "verifiedBy": "codex"
+}

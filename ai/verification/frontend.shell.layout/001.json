@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.shell.layout",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:37:36.769Z",
+  "commitHash": "d96815f80792b9f681c4669ec55189b713b4a73b",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 712
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2469
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Build SPA shell with header/title and global loading/error handling | 构建含标题栏及全局加载/错误提示的单页框架 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.73
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

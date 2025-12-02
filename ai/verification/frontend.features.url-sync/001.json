@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.url-sync",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:46:28.300Z",
+  "commitHash": "806d6d19875d07b1ef7690058b44f09b742b8287",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 831
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2549
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Sync filters to URL query params and hydrate state on refresh | 将过滤条件同步到 URL 并在刷新时恢复 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.74
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

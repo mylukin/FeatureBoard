@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.form-create",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:49:12.527Z",
+  "commitHash": "8a384c52f3fae2b983041338e461603b1957673f",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 614
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2366
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Provide create form dialog/route with validation to POST /api/features | 提供创建表单对话框/路由，校验后提交 POST /api/features works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.72
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

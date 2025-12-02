@@ -385,7 +385,7 @@
       "description": "Add /features/:id route configuration in main.ts | 在 main.ts 中添加 /features/:id 路由配置",
       "module": "frontend-app",
       "priority": 26,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Route /features/:id is defined in main.ts with lazy-loaded DetailView component",
         "Navigating to /features/1 loads the detail page without errors"
@@ -398,7 +398,14 @@
       "version": 1,
       "origin": "manual",
       "notes": "",
-      "testPattern": "tests/e2e/**/*.spec.ts"
+      "testPattern": "tests/e2e/**/*.spec.ts",
+      "verification": {
+        "verifiedAt": "2025-12-02T12:06:45.460Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "2d11eb1216e803c943ce45361533c5ca6078c9d8",
+        "summary": "2/2 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.detail-view",
@@ -481,7 +488,7 @@
   "metadata": {
     "projectGoal": "Feature-driven mini task board system",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-12-02T11:48:46.711Z",
+    "updatedAt": "2025-12-02T12:06:45.477Z",
     "version": "1.0.0"
   }
 }

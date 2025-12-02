@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.stats-view",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:58:41.422Z",
+  "commitHash": "65a5828a5cce188384bf4d13eeb9d37d18557ce6",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 2517
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2416
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Display status/module counts using /api/features/stats and refresh on list changes | 展示状态/模块统计并在数据变更时刷新 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.73
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

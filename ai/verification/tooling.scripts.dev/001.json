@@ -1,0 +1,25 @@
+{
+  "featureId": "tooling.scripts.dev",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T13:07:43.396Z",
+  "commitHash": "f73869bd1622a0e6f3fb2c2bc82da50fefcfae4a",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2304
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "NPM scripts to run backend, frontend, and concurrent dev server | NPM 脚本统一启动前后端与并行开发服务 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.76
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

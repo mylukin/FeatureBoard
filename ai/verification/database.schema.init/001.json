@@ -1,0 +1,30 @@
+{
+  "featureId": "database.schema.init",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T11:57:31.259Z",
+  "commitHash": "unknown",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 582
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 495
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Bootstrap SQLite schema for features with defaults and timestamps | 初始化 SQLite 功能项表，含默认值和时间戳 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.72
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

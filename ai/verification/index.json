@@ -1,0 +1,132 @@
+{
+  "features": {
+    "database.schema.init": {
+      "featureId": "database.schema.init",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T11:57:31.259Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "api.features.crud": {
+      "featureId": "api.features.crud",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:11:59.540Z",
+      "latestVerdict": "needs_review",
+      "totalRuns": 1,
+      "passCount": 0,
+      "failCount": 0
+    },
+    "frontend.shell.layout": {
+      "featureId": "frontend.shell.layout",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:37:36.769Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.list-view": {
+      "featureId": "frontend.features.list-view",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:40:04.656Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.filters-ui": {
+      "featureId": "frontend.features.filters-ui",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:44:13.550Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.url-sync": {
+      "featureId": "frontend.features.url-sync",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:46:28.300Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.form-create": {
+      "featureId": "frontend.features.form-create",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:49:12.527Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.form-edit": {
+      "featureId": "frontend.features.form-edit",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:52:54.541Z",
+      "latestVerdict": "needs_review",
+      "totalRuns": 1,
+      "passCount": 0,
+      "failCount": 0
+    },
+    "frontend.features.state-transition": {
+      "featureId": "frontend.features.state-transition",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:55:44.503Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.stats-view": {
+      "featureId": "frontend.features.stats-view",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T12:58:41.422Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.local-preferences": {
+      "featureId": "frontend.features.local-preferences",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T13:01:05.793Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "e2e.tests.core-flows": {
+      "featureId": "e2e.tests.core-flows",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T13:05:03.665Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "tooling.scripts.dev": {
+      "featureId": "tooling.scripts.dev",
+      "latestRun": 1,
+      "latestTimestamp": "2025-11-30T13:07:43.396Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    },
+    "frontend.features.detail-route": {
+      "featureId": "frontend.features.detail-route",
+      "latestRun": 1,
+      "latestTimestamp": "2025-12-02T12:06:45.460Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
+    }
+  },
+  "updatedAt": "2025-12-02T12:06:45.474Z",
+  "version": "2.0.0"
+}

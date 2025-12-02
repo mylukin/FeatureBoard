@@ -1,0 +1,30 @@
+{
+  "featureId": "frontend.features.filters-ui",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:44:13.550Z",
+  "commitHash": "8f823850f67761197f6657b2a0c1e2977ef4e60d",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 834
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 2067
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Add status/module filter controls above list and bind to API queries | 列表上方添加状态/模块过滤控件并驱动查询 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.73
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

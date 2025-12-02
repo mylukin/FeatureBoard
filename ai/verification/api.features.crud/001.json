@@ -1,0 +1,30 @@
+{
+  "featureId": "api.features.crud",
+  "runNumber": 1,
+  "timestamp": "2025-11-30T12:11:59.540Z",
+  "commitHash": "unknown",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "typecheck",
+      "success": true,
+      "duration": 737
+    },
+    {
+      "type": "build",
+      "success": true,
+      "duration": 600
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Expose RESTful CRUD at /api/features with JSON responses and proper errors | 在 /api/features 提供 RESTful CRUD，返回 JSON 并处理错误状态码 works as expected",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.68
+    }
+  ],
+  "verdict": "needs_review",
+  "verifiedBy": "codex"
+}
