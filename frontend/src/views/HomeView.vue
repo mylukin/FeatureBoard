@@ -243,7 +243,12 @@ onMounted(() => {
         :class="{ 'opacity-60': feature.status === 'done' }"
       >
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-medium text-gray-900">{{ feature.title }}</h3>
+          <router-link
+            :to="`/features/${feature.id}`"
+            class="text-lg font-medium text-gray-900 hover:text-blue-600 hover:underline"
+          >
+            {{ feature.title }}
+          </router-link>
           <select
             :value="feature.status"
             @change="handleStatusChange(feature, ($event.target as HTMLSelectElement).value as FeatureStatus)"

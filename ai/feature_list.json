@@ -448,7 +448,7 @@
       "description": "Make feature titles in HomeView clickable to navigate to detail page | 让 HomeView 中的功能标题可点击跳转到详情页",
       "module": "frontend-app",
       "priority": 28,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Feature title in list is wrapped with router-link to /features/:id",
         "Title has hover styles (color change, underline) for visual feedback",
@@ -464,7 +464,14 @@
       "version": 1,
       "origin": "manual",
       "notes": "",
-      "testPattern": "tests/e2e/**/*.spec.ts"
+      "testPattern": "tests/e2e/**/*.spec.ts",
+      "verification": {
+        "verifiedAt": "2025-12-02T12:18:06.685Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "7a3c34ca281297257449c7b26f48cbd9cfaadb4c",
+        "summary": "3/3 criteria satisfied"
+      }
     },
     {
       "id": "e2e.tests.detail-page",
@@ -495,7 +502,7 @@
   "metadata": {
     "projectGoal": "Feature-driven mini task board system",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-12-02T12:14:19.404Z",
+    "updatedAt": "2025-12-02T12:18:06.691Z",
     "version": "1.0.0"
   }
 }

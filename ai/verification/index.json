@@ -134,8 +134,17 @@
       "totalRuns": 2,
       "passCount": 1,
       "failCount": 1
+    },
+    "frontend.features.list-clickable-title": {
+      "featureId": "frontend.features.list-clickable-title",
+      "latestRun": 1,
+      "latestTimestamp": "2025-12-02T12:18:06.685Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
     }
   },
-  "updatedAt": "2025-12-02T12:14:19.401Z",
+  "updatedAt": "2025-12-02T12:18:06.687Z",
   "version": "2.0.0"
 }
