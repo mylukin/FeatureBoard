@@ -2,38 +2,92 @@
   "version": "1.0.0",
   "capabilities": {
     "hasTests": false,
-    "hasTypeCheck": false,
+    "testCommand": "",
+    "testFramework": "",
+    "hasTypeCheck": true,
+    "typeCheckCommand": "npm run build --prefix backend && npm run build --prefix frontend",
     "hasLint": false,
+    "lintCommand": "",
     "hasBuild": true,
     "buildCommand": "npm run build",
     "hasGit": true,
-    "source": "preset",
-    "confidence": 0.825,
+    "source": "ai-discovered",
+    "confidence": 0.616,
     "languages": [
-      "nodejs"
+      "TypeScript",
+      "Node.js",
+      "Vue 3",
+      "Vite",
+      "Tailwind CSS",
+      "Playwright",
+      "Hono",
+      "SQLite"
     ],
-    "detectedAt": "2025-11-30T13:05:28.158Z",
+    "detectedAt": "2025-12-02T11:50:35.807Z",
     "testInfo": {
       "available": false,
-      "confidence": 0
+      "command": "",
+      "framework": "",
+      "confidence": 0.2,
+      "selectiveFileTemplate": "",
+      "selectiveNameTemplate": "",
+      "packageManager": "npm"
+    },
+    "e2eInfo": {
+      "available": true,
+      "command": "npm run test:e2e",
+      "framework": "playwright",
+      "confidence": 0.95,
+      "configFile": "tests/e2e/playwright.config.ts",
+      "grepTemplate": "npm test --prefix tests/e2e -- --grep \"{tags}\"",
+      "fileTemplate": "npm test --prefix tests/e2e -- {files}"
     },
     "typeCheckInfo": {
-      "available": false,
-      "confidence": 0
+      "available": true,
+      "command": "npm run build --prefix backend && npm run build --prefix frontend",
+      "confidence": 0.78
     },
     "lintInfo": {
       "available": false,
-      "confidence": 0
+      "command": "",
+      "confidence": 0.2
     },
     "buildInfo": {
       "available": true,
       "command": "npm run build",
-      "confidence": 0.9
-    }
+      "confidence": 0.95
+    },
+    "customRules": [
+      {
+        "id": "backend-build",
+        "description": "Compile and type-check backend API service",
+        "command": "npm run build --prefix backend",
+        "type": "build"
+      },
+      {
+        "id": "db-init",
+        "description": "Initialize SQLite schema for backend",
+        "command": "npm run db:init --prefix backend",
+        "type": "custom"
+      }
+    ]
   },
-  "commitHash": "f73869bd1622a0e6f3fb2c2bc82da50fefcfae4a",
+  "commitHash": "a2aef61c6b04768fb61abd526a6b808e71c65224",
   "trackedFiles": [
     "package.json",
-    "package-lock.json"
+    "package-lock.json",
+    "backend/package.json",
+    "backend/package-lock.json",
+    "backend/tsconfig.json",
+    "frontend/package.json",
+    "frontend/package-lock.json",
+    "frontend/tsconfig.json",
+    "frontend/tsconfig.node.json",
+    "frontend/vite.config.ts",
+    "frontend/tailwind.config.js",
+    "frontend/postcss.config.js",
+    "tests/e2e/package.json",
+    "tests/e2e/package-lock.json",
+    "tests/e2e/playwright.config.ts"
   ]
 }

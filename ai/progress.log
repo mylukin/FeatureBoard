@@ -31,3 +31,4 @@ VERIFY 2025-11-30T13:05:03.667Z feature=e2e.tests.core-flows action=pass summary
 STEP 2025-11-30T13:05:03.668Z feature=e2e.tests.core-flows status=passing tests="./ai/init.sh check" summary="Completed e2e.tests.core-flows"
 VERIFY 2025-11-30T13:07:43.400Z feature=tooling.scripts.dev action=pass summary="Verified tooling.scripts.dev: pass"
 STEP 2025-11-30T13:07:43.401Z feature=tooling.scripts.dev status=passing tests="./ai/init.sh check" summary="Completed tooling.scripts.dev"
+2025-12-02T11:52:19.879Z INIT goal="Feature-driven mini task board system" note="mode=merge, features=16" summary="Created long-task harness"

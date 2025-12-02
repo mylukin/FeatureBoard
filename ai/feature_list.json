@@ -379,12 +379,109 @@
         "commitHash": "f73869bd1622a0e6f3fb2c2bc82da50fefcfae4a",
         "summary": "1/1 criteria satisfied"
       }
+    },
+    {
+      "id": "frontend.features.detail-route",
+      "description": "Add /features/:id route configuration in main.ts | 在 main.ts 中添加 /features/:id 路由配置",
+      "module": "frontend-app",
+      "priority": 26,
+      "status": "failing",
+      "acceptance": [
+        "Route /features/:id is defined in main.ts with lazy-loaded DetailView component",
+        "Navigating to /features/1 loads the detail page without errors"
+      ],
+      "dependsOn": [],
+      "supersedes": [],
+      "tags": [
+        "detail-page"
+      ],
+      "version": 1,
+      "origin": "manual",
+      "notes": "",
+      "testPattern": "tests/e2e/**/*.spec.ts"
+    },
+    {
+      "id": "frontend.features.detail-view",
+      "description": "Create DetailView.vue component displaying full feature info | 创建 DetailView.vue 组件展示完整功能信息",
+      "module": "frontend-app",
+      "priority": 27,
+      "status": "failing",
+      "acceptance": [
+        "DetailView displays feature title as prominent heading",
+        "DetailView shows full description with preserved whitespace",
+        "DetailView shows status with colored badge (todo=gray, doing=blue, done=green)",
+        "DetailView shows module name and priority level",
+        "DetailView shows formatted createdAt and updatedAt timestamps",
+        "DetailView has 'Back to List' link navigating to /",
+        "DetailView has 'Edit' button navigating to /edit/:id",
+        "DetailView handles loading state with spinner/message",
+        "DetailView shows 404 message for non-existent feature"
+      ],
+      "dependsOn": [
+        "frontend.features.detail-route"
+      ],
+      "supersedes": [],
+      "tags": [
+        "detail-page"
+      ],
+      "version": 1,
+      "origin": "manual",
+      "notes": "",
+      "testPattern": "tests/e2e/**/*.spec.ts"
+    },
+    {
+      "id": "frontend.features.list-clickable-title",
+      "description": "Make feature titles in HomeView clickable to navigate to detail page | 让 HomeView 中的功能标题可点击跳转到详情页",
+      "module": "frontend-app",
+      "priority": 28,
+      "status": "failing",
+      "acceptance": [
+        "Feature title in list is wrapped with router-link to /features/:id",
+        "Title has hover styles (color change, underline) for visual feedback",
+        "Clicking title navigates to the detail page"
+      ],
+      "dependsOn": [
+        "frontend.features.detail-view"
+      ],
+      "supersedes": [],
+      "tags": [
+        "detail-page"
+      ],
+      "version": 1,
+      "origin": "manual",
+      "notes": "",
+      "testPattern": "tests/e2e/**/*.spec.ts"
+    },
+    {
+      "id": "e2e.tests.detail-page",
+      "description": "Playwright E2E tests for feature detail page flows | Playwright 端到端测试覆盖功能详情页流程",
+      "module": "e2e-tests",
+      "priority": 29,
+      "status": "failing",
+      "acceptance": [
+        "Test: Navigate to detail page by clicking feature title in list",
+        "Test: Verify all feature data is displayed on detail page",
+        "Test: Navigate from detail page to edit page via Edit button",
+        "Test: Show 404 message for non-existent feature ID"
+      ],
+      "dependsOn": [
+        "frontend.features.list-clickable-title"
+      ],
+      "supersedes": [],
+      "tags": [
+        "detail-page",
+        "e2e"
+      ],
+      "version": 1,
+      "origin": "manual",
+      "notes": "",
+      "testPattern": "tests/e2e/**/*.spec.ts"
     }
   ],
   "metadata": {
-    "projectGoal": "请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。",
+    "projectGoal": "Feature-driven mini task board system",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-11-30T13:07:43.400Z",
+    "updatedAt": "2025-12-02T11:48:46.711Z",
     "version": "1.0.0"
   }
 }

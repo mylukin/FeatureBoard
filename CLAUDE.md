@@ -6,7 +6,7 @@ This project uses the **agent-foreman** harness for feature-driven development w
 
 ### Project Goal
 
-请根据 @docs/PRD.md 列出一份完整的功能列表（feature list），用于驱动 foreman 的功能驱动开发。
+Feature-driven mini task board system
 
 ### Core Files
 
@@ -41,15 +41,16 @@ This project uses the **agent-foreman** harness for feature-driven development w
 3. **Update status promptly** - Mark features passing when criteria met
 4. **Leave clean state** - No broken code between sessions
 5. **Use single-line log format** - One line per entry, not verbose Markdown
+6. **Never kill running processes** - Let `agent-foreman` commands complete naturally, even if they appear slow or timed out. They may be doing important work (verification, git commits, survey regeneration). Just wait for completion.
 
 ### Progress Log Format
 
 Append entries to `ai/progress.log` using this **single-line format only**:
 
 ```
-STEP 2025-01-15T10:30:00Z feature=auth.login status=passing summary="Implemented login flow"
-CHANGE 2025-01-15T11:00:00Z feature=auth.login action=refactor reason="Improved error handling"
-REPLAN 2025-01-15T12:00:00Z summary="Splitting auth into submodules" note="Original scope too large"
+2025-01-15T10:30:00Z STEP feature=auth.login status=passing summary="Implemented login flow"
+2025-01-15T11:00:00Z CHANGE feature=auth.login action=refactor reason="Improved error handling"
+2025-01-15T12:00:00Z REPLAN summary="Splitting auth into submodules" note="Original scope too large"
 ```
 
 **Log types**: `INIT` | `STEP` | `CHANGE` | `REPLAN` | `VERIFY`
@@ -68,22 +69,33 @@ agent-foreman step
 # Work on specific feature
 agent-foreman step <feature_id>
 
-# Verify and mark feature as complete (AI verification + auto-commit)
+# Complete feature (auto-runs verification + auto-commit)
+# Quick mode is default - runs only related tests based on testPattern
 agent-foreman complete <feature_id>
+
+# Full mode - run all tests (slower, for final verification)
+agent-foreman complete <feature_id> --full
+
+# Skip E2E tests (faster iterations)
+agent-foreman complete <feature_id> --skip-e2e
+
+# Skip auto-commit (manual commit)
+agent-foreman complete <feature_id> --no-commit
 
 # Skip verification (not recommended)
 agent-foreman complete <feature_id> --skip-verify
 
-# Preview verification without completing
-agent-foreman verify <feature_id>
-
 # Analyze impact of changes
 agent-foreman impact <feature_id>
+
+# Detect project verification capabilities
+agent-foreman detect-capabilities
 
 # Bootstrap/development/testing
 ./ai/init.sh bootstrap
 ./ai/init.sh dev
 ./ai/init.sh check
+./ai/init.sh check --quick  # Selective testing mode
 ```
 
 ### Feature ID Convention
@@ -124,7 +136,8 @@ Write criteria as testable statements:
       "tags": ["optional-tag"],
       "version": 1,
       "origin": "manual",
-      "notes": ""
+      "notes": "",
+      "testPattern": "tests/module/**/*.test.ts"
     }
   ],
   "metadata": {
@@ -137,6 +150,10 @@ Write criteria as testable statements:
 ```
 
 **Required fields**: `id`, `description`, `module`, `priority`, `status`, `acceptance`, `version`, `origin`
+
+**Auto-generated fields**: `testPattern` (auto-generated during init as `tests/{module}/**/*.test.*`)
+
+**Optional fields**: `testPattern` (can be overridden), `e2eTags` (Playwright tags for E2E filtering)
 
 **Status values**: `failing` | `passing` | `blocked` | `needs_review` | `deprecated`
 
