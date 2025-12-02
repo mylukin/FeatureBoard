@@ -143,8 +143,17 @@
       "totalRuns": 1,
       "passCount": 1,
       "failCount": 0
+    },
+    "e2e.tests.detail-page": {
+      "featureId": "e2e.tests.detail-page",
+      "latestRun": 1,
+      "latestTimestamp": "2025-12-02T12:21:22.669Z",
+      "latestVerdict": "pass",
+      "totalRuns": 1,
+      "passCount": 1,
+      "failCount": 0
     }
   },
-  "updatedAt": "2025-12-02T12:18:06.687Z",
+  "updatedAt": "2025-12-02T12:21:22.673Z",
   "version": "2.0.0"
 }

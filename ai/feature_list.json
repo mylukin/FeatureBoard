@@ -478,7 +478,7 @@
       "description": "Playwright E2E tests for feature detail page flows | Playwright 端到端测试覆盖功能详情页流程",
       "module": "e2e-tests",
       "priority": 29,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "Test: Navigate to detail page by clicking feature title in list",
         "Test: Verify all feature data is displayed on detail page",
@@ -496,13 +496,20 @@
       "version": 1,
       "origin": "manual",
       "notes": "",
-      "testPattern": "tests/e2e/**/*.spec.ts"
+      "testPattern": "tests/e2e/**/*.spec.ts",
+      "verification": {
+        "verifiedAt": "2025-12-02T12:21:22.669Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "ff50cbaef1fdaadf716f2e532688995a39ce1e63",
+        "summary": "4/4 criteria satisfied"
+      }
     }
   ],
   "metadata": {
     "projectGoal": "Feature-driven mini task board system",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-12-02T12:18:06.691Z",
+    "updatedAt": "2025-12-02T12:21:22.678Z",
     "version": "1.0.0"
   }
 }

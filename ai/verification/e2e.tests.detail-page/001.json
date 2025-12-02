@@ -1,0 +1,43 @@
+{
+  "featureId": "e2e.tests.detail-page",
+  "runNumber": 1,
+  "timestamp": "2025-12-02T12:21:22.669Z",
+  "commitHash": "ff50cbaef1fdaadf716f2e532688995a39ce1e63",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "init-script",
+      "success": false,
+      "duration": 47538
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "Test: Navigate to detail page by clicking feature title in list",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.93
+    },
+    {
+      "criterion": "Test: Verify all feature data is displayed on detail page",
+      "index": 1,
+      "satisfied": true,
+      "confidence": 0.9
+    },
+    {
+      "criterion": "Test: Navigate from detail page to edit page via Edit button",
+      "index": 2,
+      "satisfied": true,
+      "confidence": 0.92
+    },
+    {
+      "criterion": "Test: Show 404 message for non-existent feature ID",
+      "index": 3,
+      "satisfied": true,
+      "confidence": 0.91
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

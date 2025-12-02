@@ -173,4 +173,80 @@ test.describe('FeatureBoard E2E Tests', () => {
     await expect(page.getByText('Updated Title')).toBeVisible();
     await expect(page.getByText('Original Title')).not.toBeVisible();
   });
+
+  test('Scenario 7: Navigate to detail page by clicking feature title', async ({ page, request }) => {
+    // Create a feature via API
+    const createResponse = await request.post(API_BASE, {
+      data: {
+        title: 'Detail Page Test',
+        description: 'This is a test description\nwith multiple lines',
+        module: 'detail-test',
+        status: 'doing',
+        priority: 4,
+      },
+    });
+    const feature = await createResponse.json();
+
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // Click on the feature title
+    await page.click('text=Detail Page Test');
+
+    // Wait for navigation to detail page
+    await page.waitForURL(`/features/${feature.id}`);
+
+    // Verify all feature data is displayed
+    await expect(page.locator('h1')).toHaveText('Detail Page Test');
+    await expect(page.getByText('This is a test description')).toBeVisible();
+    await expect(page.getByText('detail-test')).toBeVisible();
+    await expect(page.getByText('In Progress')).toBeVisible();
+    await expect(page.getByText('4')).toBeVisible();
+  });
+
+  test('Scenario 8: Navigate from detail page to edit page', async ({ page, request }) => {
+    // Create a feature via API
+    const createResponse = await request.post(API_BASE, {
+      data: {
+        title: 'Edit Navigation Test',
+        module: 'nav-test',
+        status: 'todo',
+        priority: 3,
+      },
+    });
+    const feature = await createResponse.json();
+
+    // Navigate directly to detail page
+    await page.goto(`/features/${feature.id}`);
+    await page.waitForLoadState('networkidle');
+
+    // Verify we're on the detail page
+    await expect(page.locator('h1')).toHaveText('Edit Navigation Test');
+
+    // Click Edit button
+    await page.click('text=Edit Feature');
+
+    // Wait for navigation to edit page
+    await page.waitForURL(`/edit/${feature.id}`);
+
+    // Verify edit form is loaded with correct data
+    await expect(page.locator('input#title')).toHaveValue('Edit Navigation Test');
+  });
+
+  test('Scenario 9: Show 404 message for non-existent feature', async ({ page }) => {
+    // Navigate to a non-existent feature
+    await page.goto('/features/999999');
+    await page.waitForLoadState('networkidle');
+
+    // Verify 404 message is displayed
+    await expect(page.getByText('Feature Not Found')).toBeVisible();
+    await expect(page.getByText("doesn't exist")).toBeVisible();
+
+    // Verify back link is present
+    await expect(page.getByText('Back to List')).toBeVisible();
+
+    // Click back link
+    await page.click('text=Back to List');
+    await page.waitForURL('/');
+  });
 });
