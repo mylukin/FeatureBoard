@@ -2,8 +2,10 @@
 
 ## Summary
 
-FeatureBoard is a small full-stack task/feature board using Hono + SQLite on the backend and a Vue 3 + Vite SPA with filters, stats, and CRUD flows backed by Playwright E2E tests.
-> FeatureBoard 是一个小型全栈功能看板，后端采用 Hono + SQLite，前端为带过滤、统计和 CRUD 流程的 Vue 3 + Vite 单页应用，并由 Playwright 端到端测试支撑。
+FeatureBoard is a TypeScript full-stack mini board: Hono + SQLite backend and Vue 3 + Vite frontend offering feature CRUD, filters, stats, and E2E Playwright coverage.
+> FeatureBoard 是一个 TypeScript 全栈迷你看板：后端 Hono + SQLite，前端 Vue 3 + Vite，提供功能 CRUD、过滤、统计并由 Playwright 端到端测试覆盖。
+The SPA includes global loading/error UX, list with inline status changes, forms for create/edit, detail pages, and filter persistence via URL/localStorage.
+> 单页应用包含全局加载/错误体验、带内联状态切换的列表、创建/编辑表单、详情页，以及通过 URL/本地存储持久化的筛选。
 
 > Analyzed by: codex
 
@@ -11,11 +13,16 @@ FeatureBoard is a small full-stack task/feature board using Hono + SQLite on the
 
 | Aspect | Value |
 |--------|-------|
-| Language | TypeScript |
-| Framework | Vue 3 + Hono |
-| Build Tool | Vite (frontend) + tsc (backend) |
-| Test Framework | Playwright |
-| Package Manager | npm |
+| Language | TypeScript (Node + Vue)
+> TypeScript（Node + Vue） |
+| Framework | Vue 3 SPA + Hono API
+> Vue 3 单页应用 + Hono 接口 |
+| Build Tool | Vite (frontend) + tsc (backend)
+> 前端 Vite，后端 tsc |
+| Test Framework | Playwright
+> Playwright |
+| Package Manager | npm
+> npm |
 
 ## Directory Structure
 
@@ -26,85 +33,40 @@ FeatureBoard is a small full-stack task/feature board using Hono + SQLite on the
 - **Status**: complete
 - **Description**: Root npm manifest orchestrating backend/frontend dev, build, start, and e2e scripts.
 
-### backend.package
-- **Path**: `backend/package.json`
-- **Status**: complete
-- **Description**: Backend package manifest with Hono/SQLite deps and scripts for dev/start/build/db:init.
-
-### frontend.package
-- **Path**: `frontend/package.json`
-- **Status**: complete
-- **Description**: Frontend package manifest for Vue/Vite/Tailwind with dev/build/preview scripts.
-
-### tests.e2e.package
-- **Path**: `tests/e2e/package.json`
-- **Status**: complete
-- **Description**: Playwright test package with headless/headed/debug scripts.
-
-### backend.tsconfig
-- **Path**: `backend/tsconfig.json`
-- **Status**: complete
-- **Description**: TypeScript compiler settings for backend output to dist with strict checks.
-
-### frontend.tsconfig
-- **Path**: `frontend/tsconfig.json`
-- **Status**: complete
-- **Description**: TypeScript settings for Vue SPA using bundler resolution and strict mode.
-
-### frontend.vite.config
-- **Path**: `frontend/vite.config.ts`
-- **Status**: complete
-- **Description**: Vite config enabling Vue plugin, dev server port 3000, and /api proxy to 3001.
-
-### frontend.tailwind
-- **Path**: `frontend/tailwind.config.js`
-- **Status**: complete
-- **Description**: Tailwind config targeting index.html and src Vue/TS files.
-
-### frontend.postcss
-- **Path**: `frontend/postcss.config.js`
-- **Status**: complete
-- **Description**: PostCSS pipeline with Tailwind and Autoprefixer plugins.
-
-### frontend.index.html
-- **Path**: `frontend/index.html`
-- **Status**: complete
-- **Description**: SPA entry HTML mounting Vue app and loading main.ts.
-
 ### backend.index
 - **Path**: `backend/src/index.ts`
 - **Status**: complete
-- **Description**: Hono server entry with CORS, health check, feature routes, and server start.
+- **Description**: Hono server entry initializing DB, enabling CORS/health, mounting feature routes, and starting on 3001.
 
 ### backend.db.schema
 - **Path**: `backend/src/db/schema.ts`
 - **Status**: complete
-- **Description**: SQLite schema, status enum, and connection helpers with triggers.
+- **Description**: SQLite schema for features with status enum, constraints, trigger, and connection lifecycle helpers.
 
 ### backend.db.init
 - **Path**: `backend/src/db/init.ts`
 - **Status**: complete
-- **Description**: CLI bootstrap to initialize SQLite schema and close the connection.
+- **Description**: CLI bootstrap to initialize schema then close the SQLite connection.
 
 ### backend.routes.features
 - **Path**: `backend/src/routes/features.ts`
 - **Status**: complete
-- **Description**: RESTful CRUD and stats routes for features with validation and error handling.
+- **Description**: RESTful CRUD and stats endpoints with validation for status/priority and error handling.
 
 ### frontend.main
 - **Path**: `frontend/src/main.ts`
 - **Status**: complete
-- **Description**: Vue app bootstrap configuring router for home/create/edit routes.
+- **Description**: Vue app bootstrap configuring router for home/create/edit/detail routes.
 
-### frontend.app
+### frontend.app.shell
 - **Path**: `frontend/src/App.vue`
 - **Status**: complete
-- **Description**: SPA shell providing header, CTA, global loading bar, and error banner via provide/inject.
+- **Description**: App shell with header, CTA, global loading bar, error banner, and provided global state.
 
 ### frontend.api
 - **Path**: `frontend/src/api.ts`
 - **Status**: complete
-- **Description**: API client wrappers for features CRUD and stats with error handling.
+- **Description**: API client helpers wrapping features CRUD, stats, and shared response error handling.
 
 ### frontend.types
 - **Path**: `frontend/src/types.ts`
@@ -116,55 +78,65 @@ FeatureBoard is a small full-stack task/feature board using Hono + SQLite on the
 - **Status**: complete
 - **Description**: Tailwind base imports and global body styling.
 
-### frontend.views.home
+### frontend.view.home
 - **Path**: `frontend/src/views/HomeView.vue`
-- **Status**: complete
-- **Description**: Home view with filters, stats, list rendering, and inline status updates.
+- **Status**: partial
+- **Description**: Home view rendering filters, stats, feature list, inline status control, and persistence of filters.
 
-### frontend.views.create
+### frontend.view.create
 - **Path**: `frontend/src/views/CreateView.vue`
 - **Status**: complete
-- **Description**: Create feature form with validation and submission flow.
+- **Description**: Create form with validation, global loading/error integration, and navigation on submit.
 
-### frontend.views.edit
+### frontend.view.edit
 - **Path**: `frontend/src/views/EditView.vue`
 - **Status**: complete
-- **Description**: Edit feature form with preload and update handling.
+- **Description**: Edit form that preloads feature data, validates input, updates via API, and navigates back.
+
+### frontend.view.detail
+- **Path**: `frontend/src/views/DetailView.vue`
+- **Status**: complete
+- **Description**: Detail page showing full feature info with status badge, metadata, loading/404 handling, and edit/back links.
+
+### frontend.vite.config
+- **Path**: `frontend/vite.config.ts`
+- **Status**: complete
+- **Description**: Vite config with Vue plugin, dev server port 3000, and /api proxy to backend.
+
+### frontend.tailwind.config
+- **Path**: `frontend/tailwind.config.js`
+- **Status**: complete
+- **Description**: Tailwind config targeting index.html and Vue/TS sources.
 
 ### tests.e2e.config
 - **Path**: `tests/e2e/playwright.config.ts`
 - **Status**: complete
-- **Description**: Playwright configuration launching dev servers and Chromium project.
+- **Description**: Playwright config launching backend/frontend dev servers, Chromium project, and tracing.
 
 ### tests.e2e.spec
 - **Path**: `tests/e2e/featureboard.spec.ts`
 - **Status**: complete
-- **Description**: Playwright scenarios covering empty, create, edit, filter, status change, delete flows.
+- **Description**: Playwright scenarios covering empty state, create, inline status change, filter, delete, edit, detail, and 404 flows.
 
-### ai.init
+### ai.init-script
 - **Path**: `ai/init.sh`
 - **Status**: complete
-- **Description**: Agent-foreman helper script for bootstrap, dev, check, build, and status.
+- **Description**: Agent-foreman helper for bootstrap, dev, check, build, status, and help commands.
+
+### ai.feature-list
+- **Path**: `ai/feature_list.json`
+- **Status**: complete
+- **Description**: Structured backlog of features with priorities, status, and verification metadata.
 
 ### docs.prd
 - **Path**: `docs/PRD.md`
 - **Status**: complete
-- **Description**: Product requirements document defining scope and acceptance.
+- **Description**: Product requirements for FeatureBoard with data model and acceptance criteria.
 
-### ai.feature_list
-- **Path**: `ai/feature_list.json`
+### docs.survey
+- **Path**: `docs/PROJECT_SURVEY.md`
 - **Status**: complete
-- **Description**: Feature backlog metadata with priorities and verification notes.
-
-### ai.verification
-- **Path**: `ai/verification/results.json`
-- **Status**: complete
-- **Description**: Automated verification outcomes for listed features.
-
-### ai.progress
-- **Path**: `ai/progress.log`
-- **Status**: complete
-- **Description**: Chronological progress log of feature verification and completion.
+- **Description**: AI-generated project survey summarizing modules, completion, and recommendations.
 
 ## Feature Completion Status
 
@@ -186,6 +158,10 @@ FeatureBoard is a small full-stack task/feature board using Hono + SQLite on the
 | frontend.features.local-preferences | Persist last-used filters to localStorage with URL taking precedence | 将最近过滤条件存入 localStorage，URL 优先 | frontend-app | ✅ passing |
 | e2e.tests.core-flows | Playwright scenarios for empty state, create, edit/status change, filter, and delete/stat-refresh | Playwright 覆盖空列表、创建、编辑/状态流转、过滤及删除与统计刷新 | e2e-tests | ✅ passing |
 | tooling.scripts.dev | NPM scripts to run backend, frontend, and concurrent dev server | NPM 脚本统一启动前后端与并行开发服务 | tooling-docs | ✅ passing |
+| frontend.features.detail-route | Add /features/:id route configuration in main.ts | 在 main.ts 中添加 /features/:id 路由配置 | frontend-app | ✅ passing |
+| frontend.features.detail-view | Create DetailView.vue component displaying full feature info | 创建 DetailView.vue 组件展示完整功能信息 | frontend-app | ✅ passing |
+| frontend.features.list-clickable-title | Make feature titles in HomeView clickable to navigate to detail page | 让 HomeView 中的功能标题可点击跳转到详情页 | frontend-app | ✅ passing |
+| e2e.tests.detail-page | Playwright E2E tests for feature detail page flows | Playwright 端到端测试覆盖功能详情页流程 | e2e-tests | ✅ passing |
 
 ## Completion Assessment
 
@@ -193,36 +169,36 @@ FeatureBoard is a small full-stack task/feature board using Hono + SQLite on the
 
 **Notes:**
 - All features are passing
-- Completed 16/16 features
-- Last updated: 2025-11-30
+- Completed 20/20 features
+- Last updated: 2025-12-02
 
 ## Recommendations
 
-- Add backend unit/integration tests (e.g., supertest against Hono + SQLite) and introduce linting to catch regressions earlier.
-> 补充后端单元/集成测试（如使用 supertest 结合 Hono + SQLite）并引入代码规范检查以更早发现回归。
-- Expose a UI delete control and wire it to the existing DELETE API so users can remove features without API calls.
-> 在界面上提供删除控件并连接已有的 DELETE 接口，使用户无需直接调用 API 即可删除功能项。
-- Automate DB state setup/teardown for tests (temporary files or migrations) to avoid coupling to persistent backend/data artifacts.
-> 为测试自动化数据库状态的创建/清理（临时文件或迁移），避免依赖持久化的 backend/data 文件。
+- Add a UI delete control on feature cards or detail page that calls DELETE /api/features/:id and refreshes list/stats.
+> 在列表卡片或详情页加入删除控件，调用 DELETE /api/features/:id 并刷新列表/统计。
+- Introduce linting and unit/integration tests (e.g., backend route tests with supertest, frontend component tests with Vitest) for quicker regression detection.
+> 引入代码规范检查与单元/集成测试（如用 supertest 测后端路由、Vitest 测前端组件）以更快发现回归。
+- Provide backend production build/start scripts and configurable DB path/port via environment variables for deployment readiness.
+> 增加后端生产构建/启动脚本，并通过环境变量配置数据库路径和端口，以提升部署准备度。
 
 ## Commands
 
 ```bash
 # Install dependencies
 npm run install:all
-> 运行 npm run install:all 安装前后端与 E2E 依赖。
+> 执行 npm run install:all 安装前端、后端与 E2E 依赖。
 
 # Start development server
 npm run dev
-> 运行 npm run dev 并行启动前后端开发服务。
+> 执行 npm run dev 并行启动前端与后端开发服务器。
 
 # Build for production
 npm run build
-> 运行 npm run build 构建前端生产版本。
+> 执行 npm run build 构建前端生产版本。
 
 # Run tests
 npm run test:e2e
-> 运行 npm run test:e2e 执行 Playwright 端到端测试。
+> 执行 npm run test:e2e 运行 Playwright 端到端测试。
 ```
 
 ---
