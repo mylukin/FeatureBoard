@@ -647,8 +647,135 @@
         "DetailView reads the route param once on mount; if the same component instance is reused for a different id, it will not refetch unless the route reloads.\n> DetailView 只在挂载时读取路由参数；如果同一组件实例被用于不同 ID，则不会重新获取数据，除非路由重新加载。"
       ],
       "relatedFilesAnalyzed": []
+    },
+    "frontend.features.detail-view": {
+      "featureId": "frontend.features.detail-view",
+      "timestamp": "2025-12-02T12:14:19.398Z",
+      "commitHash": "92ed5a22b3dc28ab76f8b4274d5e7d68036633b7",
+      "changedFiles": [],
+      "diffSummary": "Autonomous exploration (no diff)",
+      "automatedChecks": [
+        {
+          "type": "init-script",
+          "success": false,
+          "output": "\u001b[0;32m[INFO]\u001b[0m Running checks...\n\u001b[0;32m[INFO]\u001b[0m Running tests...\n\n> featureboard@1.0.0 test:e2e\n> npm test --prefix tests/e2e\n\n\n> featureboard-e2e-tests@1.0.0 test\n> playwright test\n\n\nRunning 6 tests using 4 workers\n\n\u001b[1A\u001b[2K[1/6] [chromium] › featureboard.spec.ts:50:7 › FeatureBoard E2E Tests › Scenario 3: Change feature status via inline control\n\u001b[1A\u001b[2K[2/6] [chromium] › featureboard.spec.ts:85:7 › FeatureBoard E2E Tests › Scenario 4: Filter features by status\n\u001b[1A\u001b[2K[3/6] [chromium] › featureboard.spec.ts:26:7 › FeatureBoard E2E Tests › Scenario 2: Create a new feature and see it in the list\n\u001b[1A\u001b[2K[4/6] [chromium] › featureboard.spec.ts:16:7 › FeatureBoard E2E Tests › Scenario 1: Shows empty state when no features exist\n\u001b[1A\u001b[2K  1) [chromium] › featureboard.spec.ts:16:7 › FeatureBoard E2E Tests › Scenario 1: Shows empty state when no features exist \n\n    Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\n    Locator: getByText('No features found')\n    Expected: visible\n    Timeout: 5000ms\n    Error: element(s) not found\n\n    Call log:\n    \u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n    \u001b[2m  - waiting for getByText('No features found')\u001b[22m\n\n\n      21 |\n      22 |     // Check for empty state message\n    > 23 |     await expect(page.getByText('No features found')).toBeVisible();\n         |                                                       ^\n      24 |   });\n      25 |\n      26 |   test('Scenario 2: Create a new feature and see it in the list', async ({ page }) => {\n        at /Users/lukin/Projects/FeatureBoard/tests/e2e/featureboard.spec.ts:23:55\n\n    Error Context: test-results/featureboard-FeatureBoard--44033-tate-when-no-features-exist-chromium/error-context.md\n\n\n\u001b[1A\u001b[2K  2) [chromium] › featureboard.spec.ts:85:7 › FeatureBoard E2E Tests › Scenario 4: Filter features by status \n\n    Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\n    Locator: getByText('Todo Feature')\n    Expected: visible\n    Timeout: 5000ms\n    Error: element(s) not found\n\n    Call log:\n    \u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n    \u001b[2m  - waiting for getByText('Todo Feature')\u001b[22m\n\n\n       99 |\n      100 |     // All features should be visible initially\n    > 101 |     await expect(page.getByText('Todo Feature')).toBeVisible();\n          |                                                  ^\n      102 |     await expect(page.getByText('Doing Feature')).toBeVisible();\n      103 |     await expect(page.getByText('Done Feature')).toBeVisible();\n      104 |\n        at /Users/lukin/Projects/FeatureBoard/tests/e2e/featureboard.spec.ts:101:50\n\n    Error Context: test-results/featureboard-FeatureBoard--86337-4-Filter-features-by-status-chromium/error-context.md\n\n\n\u001b[1A\u001b[2K[5/6] [chromium] › featureboard.spec.ts:118:7 › FeatureBoard E2E Tests › Scenario 5: Delete feature and verify stats update\n\u001b[1A\u001b[2K[6/6] [chromium] › featureboard.spec.ts:145:7 › FeatureBoard E2E Tests › Scenario 6: Edit a feature\n\u001b[1A\u001b[2K  3) [chromium] › featureboard.spec.ts:118:7 › FeatureBoard E2E Tests › Scenario 5: Delete feature and verify stats update \n\n    Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\n    Locator: getByText('Feature to Delete')\n    Expected: visible\n    Timeout: 5000ms\n    Error: element(s) not found\n\n    Call log:\n    \u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n    \u001b[2m  - waiting for getByText('Feature to Delete')\u001b[22m\n\n\n      127 |\n      128 |     // Verify feature exists\n    > 129 |     await expect(page.getByText('Feature to Delete')).toBeVisible();\n          |                                                       ^\n      130 |\n      131 |     // Delete via API (since there's no delete button in UI yet)\n      132 |     await request.delete(`${API_BASE}/${feature.id}`);\n        at /Users/lukin/Projects/FeatureBoard/tests/e2e/featureboard.spec.ts:129:55\n\n    Error Context: test-results/featureboard-FeatureBoard--ffaff-ure-and-verify-stats-update-chromium/error-context.md\n\n\n\u001b[1A\u001b[2K  4) [chromium] › featureboard.spec.ts:50:7 › FeatureBoard E2E Tests › Scenario 3: Change feature status via inline control \n\n    \u001b[31mTest timeout of 30000ms exceeded.\u001b[39m\n\n    Error: locator.selectOption: Test timeout of 30000ms exceeded.\n    Call log:\n    \u001b[2m  - waiting for locator('.bg-white').filter({ hasText: 'Status Test Feature' }).locator('select')\u001b[22m\n\n\n      67 |\n      68 |     // Change status to \"doing\"\n    > 69 |     await statusSelect.selectOption('doing');\n         |                        ^\n      70 |\n      71 |     // Wait for the update\n      72 |     await page.waitForTimeout(500);\n        at /Users/lukin/Projects/FeatureBoard/tests/e2e/featureboard.spec.ts:69:24\n\n    Error Context: test-results/featureboard-FeatureBoard--9e0e7-e-status-via-inline-control-chromium/error-context.md\n\n\n\u001b[1A\u001b[2K  5) [chromium] › featureboard.spec.ts:26:7 › FeatureBoard E2E Tests › Scenario 2: Create a new feature and see it in the list \n\n    \u001b[31mTest timeout of 30000ms exceeded.\u001b[39m\n\n    Error: page.click: Test timeout of 30000ms exceeded.\n    Call log:\n    \u001b[2m  - waiting for locator('text=New Feature')\u001b[22m\n\n\n      28 |\n      29 |     // Click \"New Feature\" button\n    > 30 |     await page.click('text=New Feature');\n         |                ^\n      31 |\n      32 |     // Fill the form\n      33 |     await page.fill('input#title', 'Test Feature');\n        at /Users/lukin/Projects/FeatureBoard/tests/e2e/featureboard.spec.ts:30:16\n\n    Error Context: test-results/featureboard-FeatureBoard--19c33-ture-and-see-it-in-the-list-chromium/error-context.md\n\n\n\u001b[1A\u001b[2K  6) [chromium] › featureboard.spec.ts:145:7 › FeatureBoard E2E Tests › Scenario 6: Edit a feature ─\n\n    \u001b[31mTest timeout of 30000ms exceeded.\u001b[39m\n\n    Error: locator.click: Test timeout of 30000ms exceeded.\n    Call log:\n    \u001b[2m  - waiting for locator('.bg-white').filter({ hasText: 'Original Title' }).getByText('Edit')\u001b[22m\n\n\n      155 |     // Click edit link\n      156 |     const editLink = page.locator('.bg-white', { hasText: 'Original Title' }).getByText('Edit');\n    > 157 |     await editLink.click();\n          |                    ^\n      158 |\n      159 |     // Wait for edit page to load\n      160 |     await page.waitForURL(`/edit/${feature.id}`);\n        at /Users/lukin/Projects/FeatureBoard/tests/e2e/featureboard.spec.ts:157:20\n\n    Error Context: test-results/featureboard-FeatureBoard--57091-s-Scenario-6-Edit-a-feature-chromium/error-context.md\n\n\n\u001b[1A\u001b[2K  6 failed\n    [chromium] › featureboard.spec.ts:16:7 › FeatureBoard E2E Tests › Scenario 1: Shows empty state when no features exist \n    [chromium] › featureboard.spec.ts:26:7 › FeatureBoard E2E Tests › Scenario 2: Create a new feature and see it in the list \n    [chromium] › featureboard.spec.ts:50:7 › FeatureBoard E2E Tests › Scenario 3: Change feature status via inline control \n    [chromium] › featureboard.spec.ts:85:7 › FeatureBoard E2E Tests › Scenario 4: Filter features by status \n    [chromium] › featureboard.spec.ts:118:7 › FeatureBoard E2E Tests › Scenario 5: Delete feature and verify stats update \n    [chromium] › featureboard.spec.ts:145:7 › FeatureBoard E2E Tests › Scenario 6: Edit a feature ──\n\u001b[0;31m[ERROR]\u001b[0m Tests failed\n\u001b[0;32m[INFO]\u001b[0m Running build...\n\n> featureboard@1.0.0 build\n> npm run build --prefix frontend\n\n\n> featureboard-frontend@1.0.0 build\n> vue-tsc -b && vite build\n\nvite v6.4.1 building for production...\ntransforming...\n✓ 1581 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                      0.46 kB │ gzip:  0.30 kB\ndist/assets/index-8dQfGP0n.css      11.98 kB │ gzip:  3.05 kB\ndist/assets/api-CNaMUVfq.js          0.83 kB │ gzip:  0.40 kB\ndist/assets/CreateView-DKNn56Bz.js   4.09 kB │ gzip:  1.55 kB\ndist/assets/EditView-CN6ISIOB.js     4.58 kB │ gzip:  1.71 kB\ndist/assets/DetailView-DvwF2o3l.js   5.81 kB │ gzip:  2.13 kB\ndist/assets/HomeView-BIft7H_R.js     6.11 kB │ gzip:  2.15 kB\ndist/assets/index-Bb65DkUl.js       96.22 kB │ gzip: 37.56 kB\n✓ built in 1.21s\n\u001b[0;31m[ERROR]\u001b[0m Some checks failed\n",
+          "duration": 42167
+        }
+      ],
+      "criteriaResults": [
+        {
+          "criterion": "DetailView displays feature title as prominent heading",
+          "index": 0,
+          "satisfied": true,
+          "reasoning": "Heading renders feature.title inside an h1 with text-2xl font-bold styling, giving it prominence, though this view currently lacks automated tests.\n> 标题在 h1 中使用 text-2xl 粗体样式呈现以突出显示，但该视图目前没有自动化测试覆盖。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:98",
+            "frontend/src/views/DetailView.vue:99"
+          ],
+          "confidence": 0.73
+        },
+        {
+          "criterion": "DetailView shows full description with preserved whitespace",
+          "index": 1,
+          "satisfied": true,
+          "reasoning": "Description block uses a paragraph with whitespace-pre-line to keep line breaks and spacing while showing the full feature.description content; no tests target this behavior.\n> 描述区域使用带 whitespace-pre-line 的段落保留换行和空白并展示完整的 feature.description，暂无测试覆盖此行为。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:110",
+            "frontend/src/views/DetailView.vue:113"
+          ],
+          "confidence": 0.73
+        },
+        {
+          "criterion": "DetailView shows status with colored badge (todo=gray, doing=blue, done=green)",
+          "index": 2,
+          "satisfied": true,
+          "reasoning": "Status color classes are mapped per status in statusColors and applied to the badge span next to the title, matching gray/blue/green for todo/doing/done; this path is untested.\n> statusColors 映射按状态设置灰/蓝/绿的类并在标题旁徽章 span 上应用，符合 todo/doing/done 的颜色要求，但该路径未被测试。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:18",
+            "frontend/src/views/DetailView.vue:100"
+          ],
+          "confidence": 0.72
+        },
+        {
+          "criterion": "DetailView shows module name and priority level",
+          "index": 3,
+          "satisfied": true,
+          "reasoning": "Metadata grid renders module (defaulting to 'other') and priority with accompanying labels, ensuring both fields are visible; no automated tests cover this display.\n> 元数据网格渲染模块名（默认 other）和优先级并带标签，确保两项可见，但缺少自动化测试覆盖。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:124",
+            "frontend/src/views/DetailView.vue:135"
+          ],
+          "confidence": 0.74
+        },
+        {
+          "criterion": "DetailView shows formatted createdAt and updatedAt timestamps",
+          "index": 4,
+          "satisfied": true,
+          "reasoning": "formatDate formats ISO strings to readable date+time, and the template shows createdAt and updatedAt using that helper; functionality is code-verified only.\n> formatDate 将 ISO 字符串格式化为可读的日期和时间，模板使用该函数展示 createdAt 与 updatedAt，目前仅通过代码核对。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:30",
+            "frontend/src/views/DetailView.vue:142",
+            "frontend/src/views/DetailView.vue:149"
+          ],
+          "confidence": 0.72
+        },
+        {
+          "criterion": "DetailView has 'Back to List' link navigating to /",
+          "index": 5,
+          "satisfied": true,
+          "reasoning": "Router links labeled “Back to List” point to root both in the not-found state and above the detail content, fulfilling navigation back to '/' though untested.\n> “Back to List” 路由链接在未找到状态和详情内容顶部都指向根路径，实现返回列表导航，但未经过测试验证。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:74",
+            "frontend/src/views/DetailView.vue:90"
+          ],
+          "confidence": 0.74
+        },
+        {
+          "criterion": "DetailView has 'Edit' button navigating to /edit/:id",
+          "index": 6,
+          "satisfied": true,
+          "reasoning": "Action section renders a router-link whose :to is `/edit/${feature.id}`, providing the required Edit button navigation without existing automated coverage.\n> 操作区渲染 router-link，:to 设置为 `/edit/${feature.id}`，提供所需的编辑按钮跳转，目前没有自动化覆盖。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:154",
+            "frontend/src/views/DetailView.vue:156"
+          ],
+          "confidence": 0.74
+        },
+        {
+          "criterion": "DetailView handles loading state with spinner/message",
+          "index": 7,
+          "satisfied": true,
+          "reasoning": "loadFeature sets isLoading true during fetch and template shows a centered “Loading feature...” message while isLoading, satisfying loading feedback albeit without tests.\n> loadFeature 在请求期间将 isLoading 设为 true，模板在 isLoading 时显示居中的 “Loading feature...” 提示，满足加载反馈需求，但尚无测试。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:40",
+            "frontend/src/views/DetailView.vue:69"
+          ],
+          "confidence": 0.71
+        },
+        {
+          "criterion": "DetailView shows 404 message for non-existent feature",
+          "index": 8,
+          "satisfied": true,
+          "reasoning": "Errors containing “404” or “not found” set notFound true, which triggers the Feature Not Found message and back link in the template, aligning with 404 handling; this path lacks automated testing.\n> 错误消息含 “404” 或 “not found” 会将 notFound 设为 true，从而显示模板中的未找到提示和返回链接，符合 404 处理，但该路径缺少自动化测试。",
+          "evidence": [
+            "frontend/src/views/DetailView.vue:45",
+            "frontend/src/views/DetailView.vue:73"
+          ],
+          "confidence": 0.71
+        }
+      ],
+      "verdict": "pass",
+      "verifiedBy": "codex",
+      "overallReasoning": "DetailView.vue implements all nine requested behaviors in code—including heading, whitespace-preserving description, colored status badge, module and priority display, formatted timestamps, back/edit navigation, loading messaging, and not-found fallback—with no automated tests targeting this view, so confidence rests on code inspection.\n> DetailView.vue 在代码中实现了九项需求，包括标题、保留空白的描述、彩色状态徽章、模块与优先级显示、格式化时间戳、返回/编辑导航、加载提示和未找到回退，但没有自动化测试覆盖该视图，因此结论依赖代码审查。",
+      "suggestions": [
+        "Add unit or E2E tests for DetailView covering loading/not-found flows, whitespace formatting, and navigation links to strengthen confidence.\n> 为 DetailView 添加覆盖加载/未找到流程、空白格式和导航链接的单元或端到端测试，以增强信心。"
+      ],
+      "codeQualityNotes": [
+        "DetailView fetches only on mount; if the same component instance is reused for a different :id it will not refetch unless the route reloads, which could affect future navigation patterns.\n> DetailView 仅在挂载时获取数据；如果同一实例用于不同的 :id，除非路由重新加载，否则不会重新请求，可能影响未来的导航模式。"
+      ],
+      "relatedFilesAnalyzed": []
     }
   },
-  "updatedAt": "2025-12-02T12:06:45.475Z",
+  "updatedAt": "2025-12-02T12:14:19.402Z",
   "version": "1.0.0"
 }

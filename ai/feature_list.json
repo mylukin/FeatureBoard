@@ -412,7 +412,7 @@
       "description": "Create DetailView.vue component displaying full feature info | 创建 DetailView.vue 组件展示完整功能信息",
       "module": "frontend-app",
       "priority": 27,
-      "status": "failing",
+      "status": "passing",
       "acceptance": [
         "DetailView displays feature title as prominent heading",
         "DetailView shows full description with preserved whitespace",
@@ -434,7 +434,14 @@
       "version": 1,
       "origin": "manual",
       "notes": "",
-      "testPattern": "tests/e2e/**/*.spec.ts"
+      "testPattern": "tests/e2e/**/*.spec.ts",
+      "verification": {
+        "verifiedAt": "2025-12-02T12:14:19.398Z",
+        "verdict": "pass",
+        "verifiedBy": "codex",
+        "commitHash": "92ed5a22b3dc28ab76f8b4274d5e7d68036633b7",
+        "summary": "9/9 criteria satisfied"
+      }
     },
     {
       "id": "frontend.features.list-clickable-title",
@@ -488,7 +495,7 @@
   "metadata": {
     "projectGoal": "Feature-driven mini task board system",
     "createdAt": "2025-11-30T11:45:20.915Z",
-    "updatedAt": "2025-12-02T12:06:45.477Z",
+    "updatedAt": "2025-12-02T12:14:19.404Z",
     "version": "1.0.0"
   }
 }

@@ -1,0 +1,73 @@
+{
+  "featureId": "frontend.features.detail-view",
+  "runNumber": 2,
+  "timestamp": "2025-12-02T12:14:19.398Z",
+  "commitHash": "92ed5a22b3dc28ab76f8b4274d5e7d68036633b7",
+  "changedFiles": [],
+  "diffSummary": "Autonomous exploration (no diff)",
+  "automatedChecks": [
+    {
+      "type": "init-script",
+      "success": false,
+      "duration": 42167
+    }
+  ],
+  "criteriaResults": [
+    {
+      "criterion": "DetailView displays feature title as prominent heading",
+      "index": 0,
+      "satisfied": true,
+      "confidence": 0.73
+    },
+    {
+      "criterion": "DetailView shows full description with preserved whitespace",
+      "index": 1,
+      "satisfied": true,
+      "confidence": 0.73
+    },
+    {
+      "criterion": "DetailView shows status with colored badge (todo=gray, doing=blue, done=green)",
+      "index": 2,
+      "satisfied": true,
+      "confidence": 0.72
+    },
+    {
+      "criterion": "DetailView shows module name and priority level",
+      "index": 3,
+      "satisfied": true,
+      "confidence": 0.74
+    },
+    {
+      "criterion": "DetailView shows formatted createdAt and updatedAt timestamps",
+      "index": 4,
+      "satisfied": true,
+      "confidence": 0.72
+    },
+    {
+      "criterion": "DetailView has 'Back to List' link navigating to /",
+      "index": 5,
+      "satisfied": true,
+      "confidence": 0.74
+    },
+    {
+      "criterion": "DetailView has 'Edit' button navigating to /edit/:id",
+      "index": 6,
+      "satisfied": true,
+      "confidence": 0.74
+    },
+    {
+      "criterion": "DetailView handles loading state with spinner/message",
+      "index": 7,
+      "satisfied": true,
+      "confidence": 0.71
+    },
+    {
+      "criterion": "DetailView shows 404 message for non-existent feature",
+      "index": 8,
+      "satisfied": true,
+      "confidence": 0.71
+    }
+  ],
+  "verdict": "pass",
+  "verifiedBy": "codex"
+}

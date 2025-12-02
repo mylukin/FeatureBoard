@@ -46,10 +46,11 @@ async function loadFeature() {
     const data = await fetchFeature(featureId);
     feature.value = data;
   } catch (err) {
-    if (err instanceof Error && err.message.includes('404')) {
+    const errorMessage = err instanceof Error ? err.message : 'Failed to load feature';
+    if (errorMessage.includes('404') || errorMessage.toLowerCase().includes('not found')) {
       notFound.value = true;
     } else {
-      globalError.value = err instanceof Error ? err.message : 'Failed to load feature';
+      globalError.value = errorMessage;
     }
   } finally {
     isLoading.value = false;
